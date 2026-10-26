@@ -2,7 +2,7 @@
 
   python research/evaluate.py [checkpoint] [--threshold 0.5] [-v]
 
-`checkpoint` is a local directory or `hf-repo:subdir` (default: the zero-shot base model).
+`checkpoint` is a local directory or `hf-repo:subdir` (default: the server's default checkpoint).
 """
 
 import argparse

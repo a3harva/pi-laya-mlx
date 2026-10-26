@@ -12,7 +12,7 @@ model ──tool call──▶ pi ──tool_call hook──▶ extension ──
 
 - **Local and private.** Nothing leaves the machine. One check takes ~20-60 ms on an M-series Mac.
 - **Gives the model a reason.** Blocks come back to the model as a tool result naming the risk category (destroy, exfiltrate, remote_code, system, production), so it explains or picks a safer path.
-- **Fine-tuned for tool calls.** Ships a training script that fine-tunes Laya in MLX on labeled tool calls (`research/`). Zero-shot Laya is a weak judge of shell commands; the fine-tuned checkpoint is much better (see [Results](#results)).
+- **Fine-tuned for tool calls.** Ships a training script that fine-tunes Laya in MLX on labeled tool calls (`research/`). Zero-shot Laya is a weak judge of shell commands; the fine-tuned checkpoint ([a3harva/laya-toolguard-mlx](https://huggingface.co/a3harva/laya-toolguard-mlx)) is much better (see [Results](#results)).
 - **Jev-compatible.** The server also exposes `POST /v1/systemone`, the TypeSafe Jev request shape, for any other Laya question.
 
 ## Requirements
@@ -25,7 +25,8 @@ model ──tool call──▶ pi ──tool_call hook──▶ extension ──
 
 ```bash
 git clone https://github.com/a3harva/pi-laya-mlx && cd pi-laya-mlx
-./scripts/setup.sh          # creates server/.venv, installs MLX deps, downloads the base model, fine-tunes (~1 h)
+./scripts/setup.sh          # creates server/.venv, installs MLX deps, downloads the fine-tuned model (~500 MB)
+# ./scripts/setup.sh --finetune   # or train it yourself (~1 h on an M-series Mac)
 ```
 
 Try it for one session:
@@ -73,7 +74,7 @@ Server (`laya-guard-serve` flags or environment variables):
 
 | Variable | Default | |
 |---|---|---|
-| `LAYA_GUARD_MODEL` / `--model` | fine-tuned checkpoint if present, else `cavi-ai/laya-MLX-8bit:typed-decisions` | local dir, `hf-repo:subdir`, or a comma-separated list (cautious ensemble) |
+| `LAYA_GUARD_MODEL` / `--model` | `checkpoints/laya-toolguard` if present, else `a3harva/laya-toolguard-mlx` (v8) | local dir, `hf-repo[:subdir]`, or a comma-separated list (cautious ensemble) |
 | `LAYA_GUARD_THRESHOLD` / `--threshold` | `0.5` | |
 | `LAYA_GUARD_HOST`, `LAYA_GUARD_PORT` | `127.0.0.1`, `8723` | |
 | `LAYA_GUARD_API_KEY` | none | require `Authorization: Bearer <key>` |
@@ -125,7 +126,7 @@ because CARE did not release its split):
 
 ### Ensembles and evidence
 
-- `LAYA_GUARD_MODEL=checkpoints/v2,checkpoints/v8` runs a cautious ensemble: a call is blocked if any member would
+- `LAYA_GUARD_MODEL=a3harva/laya-toolguard-mlx,a3harva/laya-toolguard-mlx:v2` runs the v2+v8 cautious ensemble: a call is blocked if any member would
   block it. Newer checkpoints fix many red-team failures but forget a few classic attacks; the union keeps both.
 - `pip install "laya-guard[evidence]"` adds structural facts from [CARE](https://github.com/prisma-research/CARE)'s
   static shell analyzer (effect class per command part, output piped to an interpreter, critical paths, risk rules)

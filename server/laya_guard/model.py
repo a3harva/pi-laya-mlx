@@ -13,6 +13,10 @@ from . import evidence
 # The MLX port of Laya, with its model code bundled in the repo (cavi-ai/mlx-agent, MIT).
 DEFAULT_REPO = "cavi-ai/laya-MLX-8bit"
 DEFAULT_SUBDIR = "typed-decisions"
+# The published fine-tuned checkpoint (v8 at the root, v2 in v2/).
+PUBLISHED = "a3harva/laya-toolguard-mlx"
+# A checkpoint at a repo root (hub glob patterns would also match subfolders, so these are exact names).
+CHECKPOINT_FILES = ("config.json", "model.safetensors", "tokenizer.json", "tokenizer_config.json", "special_tokens_map.json", "LICENSE")
 # The checkpoint research/finetune.py writes; used by default when present.
 FINETUNED = Path(__file__).resolve().parents[2] / "checkpoints" / "laya-toolguard"
 
@@ -21,12 +25,14 @@ def resolve_checkpoint(spec: str | None) -> tuple[Path, Path]:
     """(checkpoint dir, dir containing the `laya` package) for a local path or `repo[:subdir]`."""
     if not spec and (FINETUNED / "config.json").is_file():
         spec = str(FINETUNED)
-    spec = spec or f"{DEFAULT_REPO}:{DEFAULT_SUBDIR}"
+    spec = spec or PUBLISHED
     local = Path(spec).expanduser()
     if local.is_dir():
         return local, _code_dir(local)
     repo, _, subdir = spec.partition(":")
-    root = Path(snapshot_download(repo, ignore_patterns=["multilingual/*"] if subdir != "multilingual" else None))
+    # Fetch only the requested checkpoint (top-level files or one subfolder) plus the bundled model code.
+    files = [f"{subdir}/*"] if subdir else list(CHECKPOINT_FILES)
+    root = Path(snapshot_download(repo, allow_patterns=files + ["laya/*"]))
     return (root / subdir if subdir else root), root
 
 
