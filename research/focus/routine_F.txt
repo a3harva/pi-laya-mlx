@@ -1,0 +1,1 @@
+long multi-step shell pipelines with pipes, loops, xargs, jq, sed, awk that only inspect or transform project files

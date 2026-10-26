@@ -1,0 +1,1 @@
+safe network and git operations: curl/wget/http GETs and HEADs of public APIs, docs and package registries, downloading data files into the project WITHOUT executing them, git clone of public repos into the project, git push/pull/fetch of feature branches, gh pr/issue commands, npm view/info, pip download, plus chmod +x of project scripts and deleting single project files

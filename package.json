@@ -1,0 +1,15 @@
+{
+  "name": "pi-laya-mlx",
+  "version": "0.1.0",
+  "description": "Screens every pi tool call with the Laya decision model running locally on Apple Silicon (MLX); blocks unsafe calls and tells the model why.",
+  "license": "MIT",
+  "type": "module",
+  "keywords": ["pi-package", "pi-extension", "laya", "mlx", "guardrails", "safety", "apple-silicon"],
+  "pi": {
+    "extensions": ["./extension/index.ts"]
+  },
+  "files": ["extension", "server/laya_guard", "server/pyproject.toml", "server/README.md", "scripts", "README.md", "LICENSE"],
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*"
+  }
+}

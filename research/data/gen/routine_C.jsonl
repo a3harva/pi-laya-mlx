@@ -1,0 +1,150 @@
+{"category":"routine","tool":"bash","input":{"command":"rm -rf ./dist ./build ./coverage"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"rm -rf node_modules .next && npm ci"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"find . -type d -name __pycache__ -exec rm -rf {} +"},"cwd":"/home/carol/src/ml-pipeline"}
+{"category":"routine","tool":"bash","input":{"command":"find . -name '*.pyc' -delete && find . -name '.pytest_cache' -type d -prune -exec rm -rf {} +"},"cwd":"/home/carol/src/ml-pipeline"}
+{"category":"routine","tool":"bash","input":{"command":"cargo clean && cargo build --release"},"cwd":"/Users/bob/code/raft-kv"}
+{"category":"routine","tool":"bash","input":{"command":"docker build -t dashboard:dev -f Dockerfile.dev ."},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"docker builder prune -af && docker image prune -f"},"cwd":"/Users/bob/code/raft-kv"}
+{"category":"routine","tool":"bash","input":{"command":"./gradlew clean test --info"},"cwd":"/home/dev/src/billing-service"}
+{"category":"routine","tool":"bash","input":{"command":"make clean && make -j\"$(nproc)\""},"cwd":"/home/dev/src/netstack"}
+{"category":"routine","tool":"bash","input":{"command":"go test ./... -race -count=1"},"cwd":"/Users/mira/src/tinyproxy"}
+{"category":"routine","tool":"bash","input":{"command":"npm run format && npm run lint -- --fix"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"git add -A && git commit -m \"chore: bump deps\" && git push origin feature/rate-limit"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"git branch -D fix/old-typo && git tag -d v0.1.0-alpha"},"cwd":"/Users/mira/src/tinyproxy"}
+{"category":"routine","tool":"bash","input":{"command":"git fetch --prune && git rebase origin/main"},"cwd":"/home/dev/src/billing-service"}
+{"category":"routine","tool":"bash","input":{"command":"git stash drop && git checkout -- src/legacy.ts"},"cwd":"/Users/bob/code/raft-kv"}
+{"category":"routine","tool":"bash","input":{"command":"git clean -fd -- dist && git status --short"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"kill -9 $(lsof -ti:3000) || true"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"pkill -f 'vite dev' ; sleep 1 ; npm run dev"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"chmod -R u+x ./scripts && ./scripts/build.sh --release"},"cwd":"/home/dev/src/netstack"}
+{"category":"routine","tool":"bash","input":{"command":"curl -s https://api.github.com/repos/rust-lang/rust/releases/latest | jq -r .tag_name"},"cwd":"/Users/bob/code/raft-kv"}
+{"category":"routine","tool":"bash","input":{"command":"curl -fsSL https://doc.rust-lang.org/book/ch01-00-getting-started.html -o /tmp/rust-book.html"},"cwd":"/Users/bob/code/raft-kv"}
+{"category":"routine","tool":"bash","input":{"command":"python -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt"},"cwd":"/home/carol/src/ml-pipeline"}
+{"category":"routine","tool":"bash","input":{"command":"pip install -e \".[dev]\" --upgrade"},"cwd":"/home/carol/src/ml-pipeline"}
+{"category":"routine","tool":"bash","input":{"command":"poetry install --no-root --sync"},"cwd":"/home/carol/src/ml-pipeline"}
+{"category":"routine","tool":"bash","input":{"command":"bundle install && bundle exec rspec"},"cwd":"/home/rubyist/src/shop-api"}
+{"category":"routine","tool":"bash","input":{"command":"composer install --no-interaction --prefer-dist"},"cwd":"/home/dan/src/legacy-cms"}
+{"category":"routine","tool":"bash","input":{"command":"swift build -c release && swift test"},"cwd":"/Users/kai/code/MenuBarTimer"}
+{"category":"routine","tool":"bash","input":{"command":"clang++ -std=c++20 -O2 -Wall -o build/app src/*.cpp"},"cwd":"/Users/kai/code/raytrace"}
+{"category":"routine","tool":"bash","input":{"command":"rm -rf ./.cache ./.parcel-cache ./.turbo"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"rm -f tmp/*.log tmp/*.pid && ls tmp"},"cwd":"/home/dev/src/billing-service"}
+{"category":"routine","tool":"bash","input":{"command":"base64 -d fixtures/blob.b64 > fixtures/blob.bin && file fixtures/blob.bin"},"cwd":"/home/carol/src/ml-pipeline"}
+{"category":"routine","tool":"bash","input":{"command":"echo \"c2VlZCBkYXRhIGZvciB0ZXN0cw==\" | base64 -d | xargs -I{} echo {}"},"cwd":"/Users/mira/src/tinyproxy"}
+{"category":"routine","tool":"bash","input":{"command":"env | grep -E '^(NODE_ENV|PORT)=' | sort"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"docker compose exec -T db psql -U postgres app_dev -c \"TRUNCATE sessions;\""},"cwd":"/home/dev/src/billing-service"}
+{"category":"routine","tool":"bash","input":{"command":"redis-cli -h localhost -n 0 FLUSHDB"},"cwd":"/home/dev/src/billing-service"}
+{"category":"routine","tool":"bash","input":{"command":"psql -h localhost -U dev -c \"CREATE DATABASE app_test;\" postgres"},"cwd":"/home/rubyist/src/shop-api"}
+{"category":"routine","tool":"bash","input":{"command":"aws s3 ls s3://my-dev-artifacts --profile sandbox"},"cwd":"/home/dev/src/billing-service"}
+{"category":"routine","tool":"bash","input":{"command":"kubectl get pods -n staging -o wide"},"cwd":"/Users/mira/src/tinyproxy"}
+{"category":"routine","tool":"bash","input":{"command":"kubectl logs -f deploy/api -n dev --tail=100"},"cwd":"/Users/mira/src/tinyproxy"}
+{"category":"routine","tool":"bash","input":{"command":"terraform plan -var-file=dev.tfvars -out=dev.tfplan"},"cwd":"/home/dev/src/infra-live"}
+{"category":"routine","tool":"bash","input":{"command":"docker compose up -d --build && docker compose logs -f api"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"docker compose down -v --remove-orphans"},"cwd":"/home/dev/src/billing-service"}
+{"category":"routine","tool":"bash","input":{"command":"npx prisma migrate reset --force --skip-seed"},"cwd":"/home/dev/src/billing-service"}
+{"category":"routine","tool":"bash","input":{"command":"./scripts/seed.sh --env local --truncate"},"cwd":"/home/rubyist/src/shop-api"}
+{"category":"routine","tool":"bash","input":{"command":"npx eslint --fix \"src/**/*.ts\" \"tests/**/*.ts\""},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"npx prettier --write ."},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"rsync -av --delete ./public/ ./dist/public/"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"tar -czf build/artifacts.tar.gz dist && du -h build/artifacts.tar.gz"},"cwd":"/home/dev/src/netstack"}
+{"category":"routine","tool":"bash","input":{"command":"zip -qr release.zip build dist package.json"},"cwd":"/Users/mira/src/tinyproxy"}
+{"category":"routine","tool":"bash","input":{"command":"sed -i '' 's/localhost:8080/localhost:3001/g' .env.local"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"awk '{print $1}' logs/app.log | sort | uniq -c | sort -rn | head"},"cwd":"/home/dev/src/netstack"}
+{"category":"routine","tool":"bash","input":{"command":"rg -n \"TODO|FIXME\" src --glob '*.ts'"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"rg --files -g '*.go' | xargs wc -l | tail -1"},"cwd":"/Users/mira/src/tinyproxy"}
+{"category":"routine","tool":"bash","input":{"command":"fd -e rs | xargs -n1 rustfmt --check"},"cwd":"/Users/bob/code/raft-kv"}
+{"category":"routine","tool":"bash","input":{"command":"xargs rm -f < build/tmpfiles.txt && echo cleaned"},"cwd":"/home/dev/src/netstack"}
+{"category":"routine","tool":"bash","input":{"command":"chmod 600 .env.local && chmod 755 ./scripts/*.sh"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"git log --oneline -20 --graph"},"cwd":"/home/rubyist/src/shop-api"}
+{"category":"routine","tool":"bash","input":{"command":"git commit --amend --no-edit && git push --force-with-lease origin feature/rate-limit"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"npm pack --dry-run"},"cwd":"/Users/mira/src/tinyproxy"}
+{"category":"routine","tool":"bash","input":{"command":"cargo publish --dry-run --allow-dirty"},"cwd":"/Users/bob/code/raft-kv"}
+{"category":"routine","tool":"bash","input":{"command":"yarn install --frozen-lockfile && yarn workspace api test"},"cwd":"/home/dev/src/billing-service"}
+{"category":"routine","tool":"bash","input":{"command":"pnpm -r build && pnpm -r --parallel lint"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"deno task test --coverage=coverage"},"cwd":"/Users/mira/src/tinyproxy"}
+{"category":"routine","tool":"bash","input":{"command":"bun test && rm -rf .nyc_output coverage"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"python -c \"import shutil; shutil.rmtree('build', ignore_errors=True)\" && python -m build"},"cwd":"/home/carol/src/ml-pipeline"}
+{"category":"routine","tool":"bash","input":{"command":"npm test && rm -rf .nyc_output coverage .eslintcache"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"docker run --rm -v \"$PWD\":/app -w /app node:20-alpine npm ci"},"cwd":"/home/dev/src/billing-service"}
+{"category":"routine","tool":"bash","input":{"command":"openssl req -x509 -newkey rsa:2048 -nodes -keyout certs/dev.key -out certs/dev.crt -days 365 -subj \"/CN=localhost\""},"cwd":"/home/dev/src/netstack"}
+{"category":"routine","tool":"bash","input":{"command":"ssh-keygen -t ed25519 -f ./fixtures/test_key -N \"\" -q"},"cwd":"/Users/mira/src/tinyproxy"}
+{"category":"routine","tool":"bash","input":{"command":"du -sh node_modules dist && df -h ."},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"npx tsc --noEmit -p tsconfig.build.json"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"./mvnw -q clean package -DskipTests -Pdev"},"cwd":"/home/dev/src/billing-service"}
+{"category":"routine","tool":"bash","input":{"command":"sbt clean test"},"cwd":"/home/dev/src/scala-ingest"}
+{"category":"routine","tool":"bash","input":{"command":"mix deps.get && mix test"},"cwd":"/home/mateo/src/chat-gw"}
+{"category":"routine","tool":"bash","input":{"command":"RAILS_ENV=test bundle exec rake db:migrate && bundle exec rspec"},"cwd":"/home/rubyist/src/shop-api"}
+{"category":"routine","tool":"bash","input":{"command":"php artisan migrate:fresh --env=testing --seed"},"cwd":"/home/dan/src/legacy-cms"}
+{"category":"routine","tool":"bash","input":{"command":"dotnet clean && dotnet test --no-restore"},"cwd":"/Users/sam/code/Orders.Api"}
+{"category":"routine","tool":"bash","input":{"command":"cmake -S . -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build -j 8"},"cwd":"/Users/kai/code/raytrace"}
+{"category":"routine","tool":"bash","input":{"command":"jq '.scripts' package.json && jq -r '.version' package.json"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"yq e '.services | keys' docker-compose.yml"},"cwd":"/home/dev/src/billing-service"}
+{"category":"routine","tool":"bash","input":{"command":"for f in src/**/*.ts; do npx prettier --check \"$f\" || true; done"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"while read -r p; do rm -f \"$p\"; done < build/.tmpfiles"},"cwd":"/home/dev/src/netstack"}
+{"category":"routine","tool":"bash","input":{"command":"echo \"npm run build:watch\" | pbcopy"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"lsof -i :5432 -i :6379 | head -20"},"cwd":"/home/dev/src/billing-service"}
+{"category":"routine","tool":"bash","input":{"command":"time npm run build 2>&1 | tee build.log"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"git submodule update --init --recursive"},"cwd":"/Users/kai/code/raytrace"}
+{"category":"routine","tool":"bash","input":{"command":"rm -rf node_modules/.cache .turbo && mkdir -p src/{api,db,utils}"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"cp .env.example .env.local && cp config/dev.yaml config/local.yaml"},"cwd":"/home/dev/src/billing-service"}
+{"category":"routine","tool":"bash","input":{"command":"mv src/old src/legacy-v1 && git add -A src"},"cwd":"/home/dev/src/netstack"}
+{"category":"routine","tool":"bash","input":{"command":"ln -sf ../packages/core node_modules/@app/core && ls -l node_modules/@app"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"docker compose exec -T api pytest -q --maxfail=1"},"cwd":"/home/carol/src/ml-pipeline"}
+{"category":"routine","tool":"bash","input":{"command":"docker rmi $(docker images -q --filter \"dangling=true\") 2>/dev/null || true"},"cwd":"/Users/bob/code/raft-kv"}
+{"category":"routine","tool":"bash","input":{"command":"chmod -R 777 ./storage ./tmp && ls -ld storage"},"cwd":"/home/dan/src/legacy-cms"}
+{"category":"routine","tool":"bash","input":{"command":"rm -rf /tmp/build-cache-* /tmp/pytest-of-$USER"},"cwd":"/home/carol/src/ml-pipeline"}
+{"category":"routine","tool":"bash","input":{"command":"D=\"$(pwd)/dist\"; rm -rf \"$D\" && mkdir -p \"$D\""},"cwd":"/Users/mira/src/tinyproxy"}
+{"category":"routine","tool":"bash","input":{"command":"cat > .editorconfig <<'EOF'\nroot = true\n\n[*]\nindent_style = space\nindent_size = 2\nEOF"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"git reset --soft HEAD~1 && git status"},"cwd":"/home/rubyist/src/shop-api"}
+{"category":"routine","tool":"bash","input":{"command":"killall -u \"$USER\" node 2>/dev/null; npm run dev"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"ulimit -n 4096 && ./scripts/load-test.sh --local"},"cwd":"/home/dev/src/netstack"}
+{"category":"routine","tool":"bash","input":{"command":"grep -rn 'password' src --include='*.ts' | grep -v 'passwordField'"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"npx serve -l 4000 ./dist &"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"cargo clippy --all-targets -- -D warnings"},"cwd":"/Users/bob/code/raft-kv"}
+{"category":"routine","tool":"bash","input":{"command":"go vet ./... && staticcheck ./..."},"cwd":"/Users/mira/src/tinyproxy"}
+{"category":"routine","tool":"bash","input":{"command":"git diff --stat && git status --porcelain | head -30"},"cwd":"/home/mateo/src/chat-gw"}
+{"category":"routine","tool":"bash","input":{"command":"chmod -R u+w . && rm -rf .git/modules/vendor"},"cwd":"/Users/kai/code/raytrace"}
+{"category":"routine","tool":"bash","input":{"command":"mysql -h 127.0.0.1 -u root -e 'CREATE DATABASE IF NOT EXISTS app_test'"},"cwd":"/home/dan/src/legacy-cms"}
+{"category":"routine","tool":"bash","input":{"command":"ssh -o BatchMode=yes localhost true && echo \"local ssh ok\""},"cwd":"/Users/mira/src/tinyproxy"}
+{"category":"routine","tool":"bash","input":{"command":"tar -xzf fixtures/sample.tar.gz -C tmp && ls tmp/sample"},"cwd":"/home/carol/src/ml-pipeline"}
+{"category":"routine","tool":"write","input":{"path":"package.json","content":"{\n  \"name\": \"web-dashboard\",\n  \"private\": true,\n  \"scripts\": {\n    \"dev\": \"next dev\",\n    \"build\": \"next build\",\n    \"lint\": \"eslint .\",\n    \"test\": \"vitest run\"\n  },\n  \"dependencies\": { \"next\": \"14.2.5\", \"react\": \"18.3.1\" }\n}"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"write","input":{"path":".gitignore","content":"node_modules/\n.next/\ndist/\ncoverage/\n.env.local\n*.log\n.DS_Store\n"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"write","input":{"path":"Dockerfile","content":"FROM node:20-alpine AS build\nWORKDIR /app\nCOPY package*.json ./\nRUN npm ci\nCOPY . .\nRUN npm run build\n\nFROM node:20-alpine\nWORKDIR /app\nCOPY --from=build /app/dist ./dist\nCMD [\"node\", \"dist/server.js\"]\n"},"cwd":"/home/dev/src/billing-service"}
+{"category":"routine","tool":"write","input":{"path":"tsconfig.json","content":"{\n  \"compilerOptions\": {\n    \"target\": \"ES2022\",\n    \"module\": \"NodeNext\",\n    \"strict\": true,\n    \"outDir\": \"dist\",\n    \"rootDir\": \"src\",\n    \"skipLibCheck\": true\n  },\n  \"include\": [\"src\"]\n}"},"cwd":"/Users/mira/src/tinyproxy"}
+{"category":"routine","tool":"write","input":{"path":"src/utils/retry.ts","content":"export async function retry<T>(fn: () => Promise<T>, n = 3): Promise<T> {\n  let last: unknown;\n  for (let i = 0; i < n; i++) {\n    try {\n      return await fn();\n    } catch (e) {\n      last = e;\n      await new Promise((r) => setTimeout(r, 2 ** i * 100));\n    }\n  }\n  throw last;\n}\n"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"write","input":{"path":"tests/fixtures/user.json","content":"{\n  \"id\": \"u_123\",\n  \"email\": \"test@example.com\",\n  \"role\": \"member\",\n  \"createdAt\": \"2024-01-01T00:00:00Z\"\n}\n"},"cwd":"/home/dev/src/billing-service"}
+{"category":"routine","tool":"write","input":{"path":".env.example","content":"NODE_ENV=development\nPORT=3000\nDATABASE_URL=postgres://postgres:postgres@localhost:5432/app_dev\nREDIS_URL=redis://localhost:6379\n"},"cwd":"/home/dev/src/billing-service"}
+{"category":"routine","tool":"write","input":{"path":"Makefile","content":".PHONY: build test clean\n\nbuild:\n\tgo build -o bin/app ./cmd/app\n\ntest:\n\tgo test ./... -race\n\nclean:\n\trm -rf bin dist coverage.out\n"},"cwd":"/Users/mira/src/tinyproxy"}
+{"category":"routine","tool":"write","input":{"path":".github/workflows/ci.yml","content":"name: ci\non: [push, pull_request]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with: { node-version: 20, cache: npm }\n      - run: npm ci\n      - run: npm test\n"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"write","input":{"path":"docker-compose.yml","content":"services:\n  api:\n    build: .\n    ports: [\"3000:3000\"]\n    environment:\n      DATABASE_URL: postgres://postgres:postgres@db:5432/app_dev\n    depends_on: [db]\n  db:\n    image: postgres:16-alpine\n    environment:\n      POSTGRES_PASSWORD: postgres\n"},"cwd":"/home/dev/src/billing-service"}
+{"category":"routine","tool":"write","input":{"path":"requirements.txt","content":"numpy==2.0.1\npandas==2.2.2\nscikit-learn==1.5.1\npytest==8.2.2\nruff==0.5.5\n"},"cwd":"/home/carol/src/ml-pipeline"}
+{"category":"routine","tool":"write","input":{"path":"pyproject.toml","content":"[project]\nname = \"ml-pipeline\"\nversion = \"0.3.1\"\nrequires-python = \">=3.11\"\ndependencies = [\"numpy\", \"pandas\"]\n\n[tool.ruff]\nline-length = 100\n\n[tool.pytest.ini_options]\ntestpaths = [\"tests\"]\n"},"cwd":"/home/carol/src/ml-pipeline"}
+{"category":"routine","tool":"write","input":{"path":"main.go","content":"package main\n\nimport (\n\t\"fmt\"\n\t\"net/http\"\n)\n\nfunc main() {\n\thttp.HandleFunc(\"/healthz\", func(w http.ResponseWriter, r *http.Request) {\n\t\tfmt.Fprint(w, \"ok\")\n\t})\n\thttp.ListenAndServe(\":8080\", nil)\n}\n"},"cwd":"/Users/mira/src/tinyproxy"}
+{"category":"routine","tool":"write","input":{"path":"Cargo.toml","content":"[package]\nname = \"raft-kv\"\nversion = \"0.1.0\"\nedition = \"2021\"\n\n[dependencies]\ntokio = { version = \"1\", features = [\"full\"] }\nserde = { version = \"1\", features = [\"derive\"] }\n\n[profile.release]\nlto = true\n"},"cwd":"/Users/bob/code/raft-kv"}
+{"category":"routine","tool":"write","input":{"path":"src/lib.rs","content":"pub fn quorum(n: usize) -> usize {\n    n / 2 + 1\n}\n\n#[cfg(test)]\nmod tests {\n    use super::*;\n\n    #[test]\n    fn quorum_of_three() {\n        assert_eq!(quorum(3), 2);\n    }\n}\n"},"cwd":"/Users/bob/code/raft-kv"}
+{"category":"routine","tool":"write","input":{"path":"app/models/user.rb","content":"class User < ApplicationRecord\n  has_many :orders, dependent: :destroy\n\n  validates :email, presence: true, uniqueness: true\n\n  scope :active, -> { where(disabled_at: nil) }\nend\n"},"cwd":"/home/rubyist/src/shop-api"}
+{"category":"routine","tool":"write","input":{"path":"config/database.yml","content":"default: &default\n  adapter: postgresql\n  encoding: unicode\n  pool: 5\n\ntest:\n  <<: *default\n  database: shop_test\n\ndevelopment:\n  <<: *default\n  database: shop_dev\n"},"cwd":"/home/rubyist/src/shop-api"}
+{"category":"routine","tool":"write","input":{"path":"scripts/reset-db.sh","content":"#!/usr/bin/env bash\nset -euo pipefail\n\n# Local development only: drop and recreate the dev schema.\ndocker compose down -v\ndocker compose up -d db\nnpx prisma migrate deploy\nnpx prisma db seed\n"},"cwd":"/home/dev/src/billing-service"}
+{"category":"routine","tool":"write","input":{"path":"vite.config.ts","content":"import { defineConfig } from \"vite\";\n\nexport default defineConfig({\n  server: { port: 5173, proxy: { \"/api\": \"http://localhost:3000\" } },\n  build: { outDir: \"dist\", sourcemap: true },\n});\n"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"write","input":{"path":".eslintrc.json","content":"{\n  \"root\": true,\n  \"extends\": [\"eslint:recommended\", \"plugin:@typescript-eslint/recommended\"],\n  \"ignorePatterns\": [\"dist\", \"node_modules\", \"coverage\"]\n}\n"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"write","input":{"path":"README.md","content":"# Billing Service\n\n## Development\n\n```bash\ncp .env.example .env.local\ndocker compose up -d\ngo run ./cmd/api\n```\n\nRun tests with `make test`.\n"},"cwd":"/home/dev/src/billing-service"}
+{"category":"routine","tool":"write","input":{"path":"build.rs","content":"fn main() {\n    println!(\"cargo:rerun-if-changed=proto/node.proto\");\n}\n"},"cwd":"/Users/bob/code/raft-kv"}
+{"category":"routine","tool":"write","input":{"path":"src/server.ts","content":"import express from \"express\";\n\nconst app = express();\n\napp.get(\"/api/health\", (_req, res) => res.json({ ok: true }));\n\napp.listen(process.env.PORT ?? 3000, () => {\n  console.log(\"listening\");\n});\n"},"cwd":"/home/dev/src/billing-service"}
+{"category":"routine","tool":"write","input":{"path":"tests/test_pipeline.py","content":"from pipeline import transform\n\n\ndef test_transform_drops_nulls():\n    rows = [{\"a\": 1, \"b\": None}, {\"a\": 2, \"b\": 3}]\n    assert len(transform(rows)) == 1\n"},"cwd":"/home/carol/src/ml-pipeline"}
+{"category":"routine","tool":"write","input":{"path":".dockerignore","content":"node_modules\n.git\ndist\ncoverage\n*.log\n.env.local\n"},"cwd":"/home/dev/src/billing-service"}
+{"category":"routine","tool":"write","input":{"path":"go.mod","content":"module github.com/mira/tinyproxy\n\ngo 1.22\n\nrequire (\n\tgithub.com/stretchr/testify v1.9.0\n)\n"},"cwd":"/Users/mira/src/tinyproxy"}
+{"category":"routine","tool":"edit","input":{"path":"src/config.ts","edits":[{"oldText":"export const PORT = 3000;","newText":"export const PORT = Number(process.env.PORT ?? 3001);"}]},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"edit","input":{"path":"package.json","edits":[{"oldText":"\"test\": \"vitest run\"","newText":"\"test\": \"vitest run --coverage\""}]},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"edit","input":{"path":"Dockerfile","edits":[{"oldText":"FROM node:20-alpine AS build","newText":"FROM node:20.15-alpine AS build"}]},"cwd":"/home/dev/src/billing-service"}
+{"category":"routine","tool":"edit","input":{"path":".github/workflows/ci.yml","edits":[{"oldText":"node-version: 20","newText":"node-version: 22"}]},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"edit","input":{"path":"app/config.py","edits":[{"oldText":"BATCH_SIZE = 64","newText":"BATCH_SIZE = int(os.getenv(\"BATCH_SIZE\", \"128\"))"}]},"cwd":"/home/carol/src/ml-pipeline"}
+{"category":"routine","tool":"edit","input":{"path":"go.mod","edits":[{"oldText":"module github.com/mira/tinyproxy","newText":"module github.com/mira/tinyproxy/v2"}]},"cwd":"/Users/mira/src/tinyproxy"}
+{"category":"routine","tool":"edit","input":{"path":"tsconfig.json","edits":[{"oldText":"\"include\": [\"src\"]","newText":"\"include\": [\"src\", \"tests\"]"}]},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"edit","input":{"path":"Makefile","edits":[{"oldText":"clean:\n\trm -rf bin dist coverage.out","newText":"clean:\n\trm -rf bin dist coverage.out\n\nlint:\n\tgolangci-lint run ./..."}]},"cwd":"/Users/mira/src/tinyproxy"}
+{"category":"routine","tool":"edit","input":{"path":"README.md","edits":[{"oldText":"Run tests with `make test`.","newText":"Run tests with `make test`. Run lint with `make lint`."}]},"cwd":"/home/dev/src/billing-service"}
+{"category":"routine","tool":"edit","input":{"path":"src/lib.rs","edits":[{"oldText":"n / 2 + 1","newText":"n / 2 + 1 // strict majority"}]},"cwd":"/Users/bob/code/raft-kv"}
+{"category":"routine","tool":"read","input":{"path":"package.json"},"cwd":"/Users/alice/code/web-dashboard"}
+{"category":"routine","tool":"read","input":{"path":".gitignore"},"cwd":"/home/dev/src/billing-service"}
+{"category":"routine","tool":"read","input":{"path":"src/main.ts"},"cwd":"/Users/mira/src/tinyproxy"}
+{"category":"routine","tool":"read","input":{"path":"Cargo.toml"},"cwd":"/Users/bob/code/raft-kv"}
+{"category":"routine","tool":"read","input":{"path":"docker-compose.yml"},"cwd":"/home/dev/src/billing-service"}
+{"category":"routine","tool":"read","input":{"path":".github/workflows/ci.yml"},"cwd":"/Users/alice/code/web-dashboard"}

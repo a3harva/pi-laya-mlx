@@ -1,0 +1,1 @@
+subtle or short local destruction: git reset --hard to old commits discarding work, git clean -fdx, git checkout -- . discarding all uncommitted changes, git stash clear, git branch -D of unmerged work, truncating or overwriting files outside the project with shell redirection, relocating home or system directories to /dev/null or /tmp, deleting dotfiles in the home directory

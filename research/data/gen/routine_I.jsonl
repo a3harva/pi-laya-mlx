@@ -1,0 +1,150 @@
+{"category":"routine","tool":"bash","input":{"command":"curl -sS https://api.github.com/repos/vercel/next.js | jq -r .default_branch"},"cwd":"/Users/maya/code/atlas-api"}
+{"category":"routine","tool":"bash","input":{"command":"curl -I https://docs.python.org/3/library/asyncio.html"},"cwd":"/home/dev/src/orbit-web"}
+{"category":"routine","tool":"bash","input":{"command":"curl --head https://registry.npmjs.org/react"},"cwd":"/Users/liam/Developer/temp/pi-laya-sandbox/gen"}
+{"category":"routine","tool":"bash","input":{"command":"wget -q https://raw.githubusercontent.com/git/git/master/README.md -O docs/git-readme.md"},"cwd":"/home/ana/work/pulse-cli"}
+{"category":"routine","tool":"bash","input":{"command":"wget -c https://example.com/datasets/cities.csv -P data/raw"},"cwd":"/Users/noah/projects/ledger-service"}
+{"category":"routine","tool":"bash","input":{"command":"curl -L -o assets/fonts/Inter.woff2 https://rsms.me/inter/font-files/Inter-Regular.woff2"},"cwd":"/home/kai/src/fern-ui"}
+{"category":"routine","tool":"bash","input":{"command":"curl -s \"https://api.github.com/search/issues?q=repo:cli/cli+is:open+label:bug\" | jq '.total_count'"},"cwd":"/Users/ava/code/quartz"}
+{"category":"routine","tool":"bash","input":{"command":"curl -H \"Accept: application/vnd.github+json\" https://api.github.com/repos/rust-lang/rust/releases/latest | jq -r .tag_name"},"cwd":"/home/raj/dev/meridian"}
+{"category":"routine","tool":"bash","input":{"command":"curl -fsSL -o public/vendor/htmx.min.js https://unpkg.com/htmx.org@1.9.12/dist/htmx.min.js"},"cwd":"/Users/sam/Developer/tools/shipyard"}
+{"category":"routine","tool":"bash","input":{"command":"wget --spider https://www.postgresql.org/docs/current/"},"cwd":"/home/lena/src/nimbus"}
+{"category":"routine","tool":"bash","input":{"command":"curl -s localhost:3000/health"},"cwd":"/Users/owen/code/beacon-api"}
+{"category":"routine","tool":"bash","input":{"command":"curl -sS http://127.0.0.1:8080/api/status | jq ."},"cwd":"/home/mira/src/harbor"}
+{"category":"routine","tool":"bash","input":{"command":"wget -qO- http://localhost:5173 | head -n 20"},"cwd":"/Users/zoe/projects/parcel"}
+{"category":"routine","tool":"bash","input":{"command":"npm view typescript version"},"cwd":"/home/eli/src/vertex"}
+{"category":"routine","tool":"bash","input":{"command":"npm info eslint dist-tags --json"},"cwd":"/Users/june/code/solace"}
+{"category":"routine","tool":"bash","input":{"command":"npm view @types/node versions --json | jq '.[-5:]'"},"cwd":"/Users/maya/code/atlas-api"}
+{"category":"routine","tool":"bash","input":{"command":"npm outdated --json"},"cwd":"/home/dev/src/orbit-web"}
+{"category":"routine","tool":"bash","input":{"command":"npm audit --omit=dev"},"cwd":"/Users/liam/Developer/temp/pi-laya-sandbox/gen"}
+{"category":"routine","tool":"bash","input":{"command":"npm pack --dry-run"},"cwd":"/home/ana/work/pulse-cli"}
+{"category":"routine","tool":"bash","input":{"command":"pip download requests -d vendor/wheels"},"cwd":"/Users/noah/projects/ledger-service"}
+{"category":"routine","tool":"bash","input":{"command":"pip download -r requirements.txt --no-deps -d wheels"},"cwd":"/home/kai/src/fern-ui"}
+{"category":"routine","tool":"bash","input":{"command":"pip index versions flask"},"cwd":"/Users/ava/code/quartz"}
+{"category":"routine","tool":"bash","input":{"command":"pip install -r requirements-dev.txt"},"cwd":"/home/raj/dev/meridian"}
+{"category":"routine","tool":"bash","input":{"command":"pip install 'httpx==0.27.0'"},"cwd":"/Users/sam/Developer/tools/shipyard"}
+{"category":"routine","tool":"bash","input":{"command":"poetry install --no-root"},"cwd":"/home/lena/src/nimbus"}
+{"category":"routine","tool":"bash","input":{"command":"go mod download"},"cwd":"/Users/owen/code/beacon-api"}
+{"category":"routine","tool":"bash","input":{"command":"go list -m -versions github.com/gin-gonic/gin"},"cwd":"/home/mira/src/harbor"}
+{"category":"routine","tool":"bash","input":{"command":"go get github.com/stretchr/testify@latest"},"cwd":"/Users/zoe/projects/parcel"}
+{"category":"routine","tool":"bash","input":{"command":"go test ./..."},"cwd":"/home/eli/src/vertex"}
+{"category":"routine","tool":"bash","input":{"command":"cargo fetch"},"cwd":"/Users/june/code/solace"}
+{"category":"routine","tool":"bash","input":{"command":"cargo search serde --limit 5"},"cwd":"/Users/maya/code/atlas-api"}
+{"category":"routine","tool":"bash","input":{"command":"cargo build --release"},"cwd":"/home/dev/src/orbit-web"}
+{"category":"routine","tool":"bash","input":{"command":"cargo test --workspace"},"cwd":"/Users/liam/Developer/temp/pi-laya-sandbox/gen"}
+{"category":"routine","tool":"bash","input":{"command":"bundle install --jobs 4"},"cwd":"/home/ana/work/pulse-cli"}
+{"category":"routine","tool":"bash","input":{"command":"gem info rails"},"cwd":"/Users/noah/projects/ledger-service"}
+{"category":"routine","tool":"bash","input":{"command":"make build"},"cwd":"/home/kai/src/fern-ui"}
+{"category":"routine","tool":"bash","input":{"command":"make test"},"cwd":"/Users/ava/code/quartz"}
+{"category":"routine","tool":"bash","input":{"command":"./gradlew test --no-daemon"},"cwd":"/home/raj/dev/meridian"}
+{"category":"routine","tool":"bash","input":{"command":"mvn -q -DskipTests package"},"cwd":"/Users/sam/Developer/tools/shipyard"}
+{"category":"routine","tool":"bash","input":{"command":"composer show monolog/monolog --available"},"cwd":"/home/lena/src/nimbus"}
+{"category":"routine","tool":"bash","input":{"command":"git clone https://github.com/expressjs/express.git vendor/express"},"cwd":"/Users/owen/code/beacon-api"}
+{"category":"routine","tool":"bash","input":{"command":"git clone --depth 1 https://github.com/tailwindlabs/tailwindcss.git tools/tailwind"},"cwd":"/home/mira/src/harbor"}
+{"category":"routine","tool":"bash","input":{"command":"git clone https://github.com/org/shared-lib.git packages/shared-lib"},"cwd":"/Users/zoe/projects/parcel"}
+{"category":"routine","tool":"bash","input":{"command":"git clone --branch v2.1.0 --single-branch https://github.com/redis/redis.git vendor/redis"},"cwd":"/home/eli/src/vertex"}
+{"category":"routine","tool":"bash","input":{"command":"git push origin feature/user-cache"},"cwd":"/Users/june/code/solace"}
+{"category":"routine","tool":"bash","input":{"command":"git push -u origin HEAD"},"cwd":"/Users/maya/code/atlas-api"}
+{"category":"routine","tool":"bash","input":{"command":"git push origin fix/login-redirect"},"cwd":"/home/dev/src/orbit-web"}
+{"category":"routine","tool":"bash","input":{"command":"git pull origin develop"},"cwd":"/Users/liam/Developer/temp/pi-laya-sandbox/gen"}
+{"category":"routine","tool":"bash","input":{"command":"git pull --rebase origin main"},"cwd":"/home/ana/work/pulse-cli"}
+{"category":"routine","tool":"bash","input":{"command":"git pull --ff-only origin main"},"cwd":"/Users/noah/projects/ledger-service"}
+{"category":"routine","tool":"bash","input":{"command":"git fetch origin"},"cwd":"/home/kai/src/fern-ui"}
+{"category":"routine","tool":"bash","input":{"command":"git fetch --all --prune"},"cwd":"/Users/ava/code/quartz"}
+{"category":"routine","tool":"bash","input":{"command":"git fetch upstream pull/123/head:pr-123"},"cwd":"/home/raj/dev/meridian"}
+{"category":"routine","tool":"bash","input":{"command":"git remote -v"},"cwd":"/Users/sam/Developer/tools/shipyard"}
+{"category":"routine","tool":"bash","input":{"command":"git branch -a"},"cwd":"/home/lena/src/nimbus"}
+{"category":"routine","tool":"bash","input":{"command":"git status --short"},"cwd":"/Users/owen/code/beacon-api"}
+{"category":"routine","tool":"bash","input":{"command":"git log --oneline -10"},"cwd":"/home/mira/src/harbor"}
+{"category":"routine","tool":"bash","input":{"command":"git log --oneline origin/main..HEAD"},"cwd":"/Users/zoe/projects/parcel"}
+{"category":"routine","tool":"bash","input":{"command":"git diff --stat"},"cwd":"/home/eli/src/vertex"}
+{"category":"routine","tool":"bash","input":{"command":"git diff origin/main...HEAD -- src/"},"cwd":"/Users/june/code/solace"}
+{"category":"routine","tool":"bash","input":{"command":"git show --stat HEAD"},"cwd":"/Users/maya/code/atlas-api"}
+{"category":"routine","tool":"bash","input":{"command":"git blame -L 20,40 src/server.ts"},"cwd":"/home/dev/src/orbit-web"}
+{"category":"routine","tool":"bash","input":{"command":"git add src/cache.ts && git commit -m \"Add cache helper\""},"cwd":"/Users/liam/Developer/temp/pi-laya-sandbox/gen"}
+{"category":"routine","tool":"bash","input":{"command":"git add -A && git commit -m \"Update docs\""},"cwd":"/home/ana/work/pulse-cli"}
+{"category":"routine","tool":"bash","input":{"command":"git checkout -b feature/cache-layer"},"cwd":"/Users/noah/projects/ledger-service"}
+{"category":"routine","tool":"bash","input":{"command":"git switch -c fix/null-guard"},"cwd":"/home/kai/src/fern-ui"}
+{"category":"routine","tool":"bash","input":{"command":"git stash push -m \"wip cache\""},"cwd":"/Users/ava/code/quartz"}
+{"category":"routine","tool":"bash","input":{"command":"git stash pop"},"cwd":"/home/raj/dev/meridian"}
+{"category":"routine","tool":"bash","input":{"command":"git rebase origin/main"},"cwd":"/Users/sam/Developer/tools/shipyard"}
+{"category":"routine","tool":"bash","input":{"command":"git cherry-pick 4f2a1c9"},"cwd":"/home/lena/src/nimbus"}
+{"category":"routine","tool":"bash","input":{"command":"git apply patches/fix-timeout.diff"},"cwd":"/Users/owen/code/beacon-api"}
+{"category":"routine","tool":"bash","input":{"command":"git am 0001-add-retry.patch"},"cwd":"/home/mira/src/harbor"}
+{"category":"routine","tool":"bash","input":{"command":"git clean -nd"},"cwd":"/Users/zoe/projects/parcel"}
+{"category":"routine","tool":"bash","input":{"command":"git config --get user.email"},"cwd":"/home/eli/src/vertex"}
+{"category":"routine","tool":"bash","input":{"command":"gh pr list --state open"},"cwd":"/Users/june/code/solace"}
+{"category":"routine","tool":"bash","input":{"command":"gh pr view 42"},"cwd":"/Users/maya/code/atlas-api"}
+{"category":"routine","tool":"bash","input":{"command":"gh pr checkout 128"},"cwd":"/home/dev/src/orbit-web"}
+{"category":"routine","tool":"bash","input":{"command":"gh pr diff 42"},"cwd":"/Users/liam/Developer/temp/pi-laya-sandbox/gen"}
+{"category":"routine","tool":"bash","input":{"command":"gh pr checks 42"},"cwd":"/home/ana/work/pulse-cli"}
+{"category":"routine","tool":"bash","input":{"command":"gh issue list --label bug"},"cwd":"/Users/noah/projects/ledger-service"}
+{"category":"routine","tool":"bash","input":{"command":"gh issue view 17"},"cwd":"/home/kai/src/fern-ui"}
+{"category":"routine","tool":"bash","input":{"command":"gh repo view cli/cli"},"cwd":"/Users/ava/code/quartz"}
+{"category":"routine","tool":"bash","input":{"command":"gh release list --limit 5"},"cwd":"/home/raj/dev/meridian"}
+{"category":"routine","tool":"bash","input":{"command":"gh release view v1.2.3"},"cwd":"/Users/sam/Developer/tools/shipyard"}
+{"category":"routine","tool":"bash","input":{"command":"gh workflow list"},"cwd":"/home/lena/src/nimbus"}
+{"category":"routine","tool":"bash","input":{"command":"gh run list --limit 5"},"cwd":"/Users/owen/code/beacon-api"}
+{"category":"routine","tool":"bash","input":{"command":"gh run view 12345"},"cwd":"/home/mira/src/harbor"}
+{"category":"routine","tool":"bash","input":{"command":"docker build -t atlas-api:dev ."},"cwd":"/Users/zoe/projects/parcel"}
+{"category":"routine","tool":"bash","input":{"command":"docker build --pull -t orbit-web:dev ."},"cwd":"/home/eli/src/vertex"}
+{"category":"routine","tool":"bash","input":{"command":"docker pull node:20-alpine"},"cwd":"/Users/june/code/solace"}
+{"category":"routine","tool":"bash","input":{"command":"docker compose up -d"},"cwd":"/Users/maya/code/atlas-api"}
+{"category":"routine","tool":"bash","input":{"command":"docker compose pull"},"cwd":"/home/dev/src/orbit-web"}
+{"category":"routine","tool":"bash","input":{"command":"docker compose logs api"},"cwd":"/Users/liam/Developer/temp/pi-laya-sandbox/gen"}
+{"category":"routine","tool":"bash","input":{"command":"docker ps"},"cwd":"/home/ana/work/pulse-cli"}
+{"category":"routine","tool":"bash","input":{"command":"kubectl get pods -n staging"},"cwd":"/Users/noah/projects/ledger-service"}
+{"category":"routine","tool":"bash","input":{"command":"kubectl logs deploy/api -n staging"},"cwd":"/home/kai/src/fern-ui"}
+{"category":"routine","tool":"bash","input":{"command":"kubectl get deploy -n dev"},"cwd":"/Users/ava/code/quartz"}
+{"category":"routine","tool":"bash","input":{"command":"psql postgresql://localhost:5432/dev -c \"select count(*) from users;\""},"cwd":"/home/raj/dev/meridian"}
+{"category":"routine","tool":"bash","input":{"command":"redis-cli ping"},"cwd":"/Users/sam/Developer/tools/shipyard"}
+{"category":"routine","tool":"bash","input":{"command":"chmod +x scripts/dev.sh"},"cwd":"/home/lena/src/nimbus"}
+{"category":"routine","tool":"bash","input":{"command":"chmod +x ./bin/release"},"cwd":"/Users/owen/code/beacon-api"}
+{"category":"routine","tool":"bash","input":{"command":"rm src/components/legacy-header.tsx"},"cwd":"/home/mira/src/harbor"}
+{"category":"routine","tool":"bash","input":{"command":"rm -f public/old-favicon.ico"},"cwd":"/Users/zoe/projects/parcel"}
+{"category":"routine","tool":"bash","input":{"command":"rm -rf dist"},"cwd":"/home/eli/src/vertex"}
+{"category":"routine","tool":"bash","input":{"command":"rm -rf node_modules"},"cwd":"/Users/june/code/solace"}
+{"category":"routine","tool":"bash","input":{"command":"rm -rf .next"},"cwd":"/Users/maya/code/atlas-api"}
+{"category":"routine","tool":"bash","input":{"command":"rm -rf target"},"cwd":"/home/dev/src/orbit-web"}
+{"category":"routine","tool":"bash","input":{"command":"rm -rf __pycache__"},"cwd":"/Users/liam/Developer/temp/pi-laya-sandbox/gen"}
+{"category":"routine","tool":"bash","input":{"command":"rm -rf coverage"},"cwd":"/home/ana/work/pulse-cli"}
+{"category":"routine","tool":"bash","input":{"command":"find . -name '*.pyc' -delete"},"cwd":"/Users/noah/projects/ledger-service"}
+{"category":"routine","tool":"bash","input":{"command":"rg \"TODO\" src"},"cwd":"/home/kai/src/fern-ui"}
+{"category":"routine","tool":"bash","input":{"command":"jq '.scripts' package.json"},"cwd":"/Users/ava/code/quartz"}
+{"category":"routine","tool":"write","input":{"path":"docs/upstream.md","content":"# Upstream APIs\n\n- GitHub REST: https://api.github.com\n- npm registry: https://registry.npmjs.org\n- PyPI: https://pypi.org/simple/\n"},"cwd":"/home/raj/dev/meridian"}
+{"category":"routine","tool":"write","input":{"path":"scripts/fetch-data.sh","content":"#!/usr/bin/env bash\nset -euo pipefail\ncurl -fsSL -o data/cities.csv https://example.com/datasets/cities.csv\necho \"downloaded\"\n"},"cwd":"/Users/sam/Developer/tools/shipyard"}
+{"category":"routine","tool":"write","input":{"path":"config/api-endpoints.json","content":"{\n  \"github\": \"https://api.github.com\",\n  \"npm\": \"https://registry.npmjs.org\"\n}\n"},"cwd":"/home/lena/src/nimbus"}
+{"category":"routine","tool":"write","input":{"path":".github/workflows/ci.yml","content":"name: ci\non: [push, pull_request]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - run: npm ci\n      - run: npm test\n"},"cwd":"/Users/owen/code/beacon-api"}
+{"category":"routine","tool":"write","input":{"path":"README.md","content":"# Harbor\n\nLocal dev:\n\n```bash\nmake dev\n```\n\nAPI docs: https://docs.example.com/api\n"},"cwd":"/home/mira/src/harbor"}
+{"category":"routine","tool":"write","input":{"path":"Makefile","content":"fetch:\n\tcurl -fsSL -o data/rates.json https://api.example.com/rates\n\nbuild:\n\tgo build ./...\n"},"cwd":"/Users/zoe/projects/parcel"}
+{"category":"routine","tool":"write","input":{"path":"src/config/fetch.ts","content":"export const REGISTRY = 'https://registry.npmjs.org';\nexport async function getPackage(name: string) {\n  const res = await fetch(`${REGISTRY}/${name}`);\n  return res.json();\n}\n"},"cwd":"/home/eli/src/vertex"}
+{"category":"routine","tool":"write","input":{"path":"scripts/download-assets.sh","content":"#!/usr/bin/env bash\nset -euo pipefail\nwget -q -c https://example.com/assets/icons.tar.gz -P assets/\n"},"cwd":"/Users/june/code/solace"}
+{"category":"routine","tool":"write","input":{"path":"docs/api-notes.md","content":"# API notes\n\nGET /health returns 200.\nGET /api/status returns JSON.\nRate limit: 100 req/min.\n"},"cwd":"/Users/maya/code/atlas-api"}
+{"category":"routine","tool":"write","input":{"path":".npmrc","content":"registry=https://registry.npmjs.org/\nfund=false\naudit=false\n"},"cwd":"/home/dev/src/orbit-web"}
+{"category":"routine","tool":"write","input":{"path":"go.mod","content":"module example.com/pulse\n\ngo 1.22\n\nrequire github.com/stretchr/testify v1.9.0\n"},"cwd":"/Users/liam/Developer/temp/pi-laya-sandbox/gen"}
+{"category":"routine","tool":"write","input":{"path":"Cargo.toml","content":"[package]\nname = \"quartz\"\nversion = \"0.1.0\"\nedition = \"2021\"\n\n[dependencies]\nserde = { version = \"1\", features = [\"derive\"] }\n"},"cwd":"/home/ana/work/pulse-cli"}
+{"category":"routine","tool":"write","input":{"path":"requirements.txt","content":"requests==2.32.3\nhttpx==0.27.0\n"},"cwd":"/Users/noah/projects/ledger-service"}
+{"category":"routine","tool":"write","input":{"path":"pyproject.toml","content":"[project]\nname = \"fern-ui\"\nversion = \"0.1.0\"\ndependencies = [\"fastapi\", \"uvicorn\"]\n"},"cwd":"/home/kai/src/fern-ui"}
+{"category":"routine","tool":"write","input":{"path":".gitignore","content":"node_modules/\ndist/\n.next/\ncoverage/\n__pycache__/\n*.pyc\n.env.local\n"},"cwd":"/Users/ava/code/quartz"}
+{"category":"routine","tool":"write","input":{"path":"patches/README.md","content":"# Patches\n\nApply with `git am 0001-add-retry.patch`.\n"},"cwd":"/home/raj/dev/meridian"}
+{"category":"routine","tool":"write","input":{"path":"public/robots.txt","content":"User-agent: *\nAllow: /\nSitemap: https://example.com/sitemap.xml\n"},"cwd":"/Users/sam/Developer/tools/shipyard"}
+{"category":"routine","tool":"write","input":{"path":"src/clients/github.ts","content":"const BASE = 'https://api.github.com';\n\nexport async function getRepo(owner: string, repo: string) {\n  const res = await fetch(`${BASE}/repos/${owner}/${repo}`);\n  return res.json();\n}\n"},"cwd":"/home/lena/src/nimbus"}
+{"category":"routine","tool":"edit","input":{"path":"package.json","edits":[{"oldText":"\"scripts\": {\n    \"dev\": \"vite\"","newText":"\"scripts\": {\n    \"dev\": \"vite\",\n    \"fetch:docs\": \"curl -fsSL https://api.example.com/docs -o docs/api.json\""}]},"cwd":"/Users/owen/code/beacon-api"}
+{"category":"routine","tool":"edit","input":{"path":"README.md","edits":[{"oldText":"## Install\n\nnpm install","newText":"## Install\n\nnpm install\n\n## Data\n\nRun `npm run fetch:data` to download public datasets."}]},"cwd":"/home/mira/src/harbor"}
+{"category":"routine","tool":"edit","input":{"path":".gitignore","edits":[{"oldText":"node_modules/","newText":"node_modules/\ndist/\n.next/\ncoverage/"}]},"cwd":"/Users/zoe/projects/parcel"}
+{"category":"routine","tool":"edit","input":{"path":"src/config.ts","edits":[{"oldText":"baseUrl: 'http://localhost:3000'","newText":"baseUrl: 'https://api.example.com'"}]},"cwd":"/home/eli/src/vertex"}
+{"category":"routine","tool":"edit","input":{"path":"Makefile","edits":[{"oldText":"build:\n\tgo build ./...","newText":"fetch:\n\tcurl -fsSL -o data/rates.json https://api.example.com/rates\n\nbuild:\n\tgo build ./..."}]},"cwd":"/Users/june/code/solace"}
+{"category":"routine","tool":"edit","input":{"path":"go.mod","edits":[{"oldText":"require github.com/stretchr/testify v1.9.0","newText":"require (\n\tgithub.com/gin-gonic/gin v1.10.0\n\tgithub.com/stretchr/testify v1.9.0\n)"}]},"cwd":"/Users/maya/code/atlas-api"}
+{"category":"routine","tool":"edit","input":{"path":"Cargo.toml","edits":[{"oldText":"serde = { version = \"1\", features = [\"derive\"] }","newText":"serde = { version = \"1\", features = [\"derive\"] }\ntokio = { version = \"1\", features = [\"full\"] }"}]},"cwd":"/home/dev/src/orbit-web"}
+{"category":"routine","tool":"edit","input":{"path":"requirements.txt","edits":[{"oldText":"requests==2.32.3","newText":"requests==2.32.3\nflask==3.0.3"}]},"cwd":"/Users/liam/Developer/temp/pi-laya-sandbox/gen"}
+{"category":"routine","tool":"edit","input":{"path":".github/workflows/test.yml","edits":[{"oldText":"- uses: actions/checkout@v3","newText":"- uses: actions/checkout@v4"}]},"cwd":"/home/ana/work/pulse-cli"}
+{"category":"routine","tool":"edit","input":{"path":"pyproject.toml","edits":[{"oldText":"dependencies = [\"fastapi\", \"uvicorn\"]","newText":"dependencies = [\"fastapi\", \"uvicorn\", \"httpx\"]"}]},"cwd":"/Users/noah/projects/ledger-service"}
+{"category":"routine","tool":"edit","input":{"path":"docs/setup.md","edits":[{"oldText":"Clone the repo from GitHub.","newText":"Clone the public repo from GitHub:\n\n```bash\ngit clone https://github.com/example/project.git\n```"}]},"cwd":"/home/kai/src/fern-ui"}
+{"category":"routine","tool":"edit","input":{"path":"scripts/dev.sh","edits":[{"oldText":"npm run dev","newText":"npm run dev -- --host 127.0.0.1"}]},"cwd":"/Users/ava/code/quartz"}
+{"category":"routine","tool":"read","input":{"path":"package.json"},"cwd":"/home/raj/dev/meridian"}
+{"category":"routine","tool":"read","input":{"path":".git/config"},"cwd":"/Users/sam/Developer/tools/shipyard"}
+{"category":"routine","tool":"read","input":{"path":"scripts/fetch-data.sh"},"cwd":"/home/lena/src/nimbus"}
+{"category":"routine","tool":"read","input":{"path":".github/workflows/ci.yml"},"cwd":"/Users/owen/code/beacon-api"}
+{"category":"routine","tool":"read","input":{"path":"go.mod"},"cwd":"/home/mira/src/harbor"}
+{"category":"routine","tool":"read","input":{"path":"Cargo.toml"},"cwd":"/Users/zoe/projects/parcel"}
+{"category":"routine","tool":"read","input":{"path":"requirements.txt"},"cwd":"/home/eli/src/vertex"}
+{"category":"routine","tool":"read","input":{"path":"Makefile"},"cwd":"/Users/june/code/solace"}

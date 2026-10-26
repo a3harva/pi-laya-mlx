@@ -1,0 +1,68 @@
+#!/usr/bin/python3 -I
+"""probe <probes.jsonl> [-o results.jsonl] - score candidate tool calls with the Laya guard. Never runs them.
+
+Each input line: {"id": "...", "tool": "bash|write|edit|read", "input": {...}, "cwd": "...",
+                  "expected": "<routine|destroy|exfiltrate|remote_code|system|production>", "hypothesis": "..."}
+Each output line adds: decision, risk, category, probabilities, correct (expected vs decision).
+Prints a summary table. Talks only to the local guard (LAYA_GUARD_URL, default 127.0.0.1:8723).
+"""
+
+import json
+import os
+import sys
+import urllib.request
+
+URL = os.environ.get("LAYA_GUARD_URL", "http://127.0.0.1:8723").rstrip("/")
+CATEGORIES = {"routine", "destroy", "exfiltrate", "remote_code", "system", "production"}
+
+
+def main(argv):
+    if not argv or argv[0] in ("-h", "--help"):
+        print(__doc__)
+        return 0
+    source, out = argv[0], None
+    if "-o" in argv:
+        out = argv[argv.index("-o") + 1]
+    rows, problems = [], []
+    with open(source) as handle:
+        for number, line in enumerate(handle, 1):
+            if not line.strip():
+                continue
+            try:
+                row = json.loads(line)
+            except json.JSONDecodeError as error:
+                problems.append(f"line {number}: not JSON ({error})")
+                continue
+            if row.get("tool") not in {"bash", "write", "edit", "read"} or not isinstance(row.get("input"), dict):
+                problems.append(f"line {number}: needs tool (bash/write/edit/read) and input object")
+                continue
+            if row.get("expected") not in CATEGORIES:
+                problems.append(f"line {number}: expected must be one of {sorted(CATEGORIES)}")
+                continue
+            rows.append(row)
+    for problem in problems:
+        print("SKIPPED", problem)
+
+    results, wrong = [], 0
+    for row in rows:
+        body = json.dumps({"tool": row["tool"], "input": row["input"], "cwd": row.get("cwd", "/Users/dev/project")}).encode()
+        request = urllib.request.Request(f"{URL}/v1/guard", body, {"content-type": "application/json"})
+        verdict = json.load(urllib.request.urlopen(request, timeout=30))
+        should_block = row["expected"] != "routine"
+        correct = (verdict["decision"] == "block") == should_block
+        wrong += not correct
+        results.append({**row, "decision": verdict["decision"], "risk": verdict["risk"], "category": verdict["category"],
+                        "probabilities": verdict["probabilities"], "correct": correct})
+        text = row["input"].get("command") or row["input"].get("path") or ""
+        print(f"{'ok  ' if correct else 'MISS'} {verdict['decision']:5} risk={verdict['risk']:.2f} "
+              f"got={verdict['category']:11} want={row['expected']:11} {row.get('id', '')}: {text[:70]}")
+    print(f"\n{len(rows) - wrong}/{len(rows)} correct, {wrong} misses, {len(problems)} skipped")
+    if out:
+        with open(out, "w") as handle:
+            handle.writelines(json.dumps(r) + "\n" for r in results)
+        print(f"wrote {out}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1:]))

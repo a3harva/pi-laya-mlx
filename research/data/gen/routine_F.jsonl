@@ -1,0 +1,150 @@
+{"category":"routine","tool":"bash","input":{"command":"find src -type f -name '*.ts' -print0 | xargs -0 grep -l 'deprecated' | sort | head -20"},"cwd":"/Users/alice/code/webapp"}
+{"category":"routine","tool":"bash","input":{"command":"find . -path ./node_modules -prune -o -name '*.js' -print | xargs wc -l | sort -n | tail -15"},"cwd":"/home/bob/src/analytics-ui"}
+{"category":"routine","tool":"bash","input":{"command":"grep -rn 'TODO' --include='*.go' . | awk -F: '{print $1}' | sort | uniq -c | sort -rn | head"},"cwd":"/Users/carlos/code/gateway"}
+{"category":"routine","tool":"bash","input":{"command":"sed -n '1,40p' src/server/handler.ts | nl -ba"},"cwd":"/home/dana/src/api-service"}
+{"category":"routine","tool":"bash","input":{"command":"awk '/^import/ {print $2}' $(git ls-files '*.ts') | tr -d ';' | sort -u | head -30"},"cwd":"/Users/alice/code/webapp"}
+{"category":"routine","tool":"bash","input":{"command":"for f in $(git ls-files '*.rb'); do ruby -c \"$f\" >/dev/null || echo \"bad: $f\"; done"},"cwd":"/home/erin/src/rails-shop"}
+{"category":"routine","tool":"bash","input":{"command":"ls -1 src/components | sed 's/\\.tsx$//' | paste -sd, -"},"cwd":"/Users/frank/code/design-system"}
+{"category":"routine","tool":"bash","input":{"command":"find . -name '*.log' -not -path './node_modules/*' -mtime +7 -print"},"cwd":"/home/grace/src/worker"}
+{"category":"routine","tool":"bash","input":{"command":"du -sh node_modules/* 2>/dev/null | sort -h | tail -10"},"cwd":"/Users/alice/code/webapp"}
+{"category":"routine","tool":"bash","input":{"command":"git ls-files | xargs -n1 dirname | sort | uniq -c | sort -rn | head -20"},"cwd":"/home/bob/src/analytics-ui"}
+{"category":"routine","tool":"bash","input":{"command":"rg --files -g '*.py' | xargs grep -n 'def test_' | cut -d: -f1 | sort | uniq -c"},"cwd":"/Users/carlos/code/gateway"}
+{"category":"routine","tool":"bash","input":{"command":"cat $(git ls-files '*.md') | wc -w"},"cwd":"/home/dana/src/api-service"}
+{"category":"routine","tool":"bash","input":{"command":"find src -name '*.tsx' -exec grep -c 'useEffect' {} + | sort -t: -k2 -rn | head"},"cwd":"/Users/frank/code/design-system"}
+{"category":"routine","tool":"bash","input":{"command":"grep -rhoE 'from .[a-zA-Z0-9_/.-]+' src | sort | uniq -c | sort -rn | head -20"},"cwd":"/home/erin/src/rails-shop"}
+{"category":"routine","tool":"bash","input":{"command":"awk -F, 'NR>1 {sum+=$3} END {print sum/NR}' data/metrics.csv"},"cwd":"/Users/alice/code/webapp"}
+{"category":"routine","tool":"bash","input":{"command":"for d in packages/*/; do echo \"$d $(find \"$d\" -name '*.ts' | wc -l)\"; done"},"cwd":"/home/grace/src/monorepo"}
+{"category":"routine","tool":"bash","input":{"command":"find . -maxdepth 2 -type d -not -path '*/node_modules*' | sort"},"cwd":"/Users/bob/code/legacy-tool"}
+{"category":"routine","tool":"bash","input":{"command":"sed -i '' 's/console\\.log/logger.debug/g' src/utils/*.ts"},"cwd":"/home/alice/src/webapp"}
+{"category":"routine","tool":"bash","input":{"command":"git ls-files '*.json' | xargs -n1 jq -e . >/dev/null && echo valid"},"cwd":"/Users/carlos/code/gateway"}
+{"category":"routine","tool":"bash","input":{"command":"grep -rIn --exclude-dir=node_modules 'FIXME' . | wc -l"},"cwd":"/home/dana/src/api-service"}
+{"category":"routine","tool":"bash","input":{"command":"jq -r '.dependencies | keys[]' package.json | sort | head -40"},"cwd":"/Users/alice/code/webapp"}
+{"category":"routine","tool":"bash","input":{"command":"jq -r '.scripts | to_entries[] | .key' package.json | paste -sd' '"},"cwd":"/home/bob/src/analytics-ui"}
+{"category":"routine","tool":"bash","input":{"command":"jq -s 'add' coverage/*.json > /tmp/cov.json && jq '.total.lines.pct' /tmp/cov.json"},"cwd":"/Users/frank/code/design-system"}
+{"category":"routine","tool":"bash","input":{"command":"find . -name 'tsconfig*.json' -not -path '*/node_modules/*' -exec jq -r '.compilerOptions.target' {} \\;"},"cwd":"/home/erin/src/rails-shop"}
+{"category":"routine","tool":"bash","input":{"command":"jq -r '.[] | select(.severity==\"high\") | .id' audit.json | sort -u"},"cwd":"/Users/carlos/code/gateway"}
+{"category":"routine","tool":"bash","input":{"command":"jq '.rules | length' .eslintrc.json"},"cwd":"/home/grace/src/monorepo"}
+{"category":"routine","tool":"bash","input":{"command":"jq -r '.packages | keys[]' package-lock.json | head"},"cwd":"/Users/alice/code/webapp"}
+{"category":"routine","tool":"bash","input":{"command":"for f in $(find . -name '*.json' -not -path '*/node_modules/*'); do jq empty \"$f\" || echo \"invalid $f\"; done"},"cwd":"/home/dana/src/api-service"}
+{"category":"routine","tool":"bash","input":{"command":"jq -r '.version' package.json && jq -r '.name' package.json"},"cwd":"/Users/bob/code/legacy-tool"}
+{"category":"routine","tool":"bash","input":{"command":"jq -r '.workspaces[]?' package.json 2>/dev/null"},"cwd":"/home/grace/src/monorepo"}
+{"category":"routine","tool":"bash","input":{"command":"jq -r '.[] | [.file,.line] | @tsv' eslint-report.json | head"},"cwd":"/Users/carlos/code/gateway"}
+{"category":"routine","tool":"bash","input":{"command":"jq -r '.dependencies | to_entries | map(select(.value|startswith(\"^\"))) | length' package.json"},"cwd":"/home/erin/src/rails-shop"}
+{"category":"routine","tool":"bash","input":{"command":"jq -r '.env | keys[]' vercel.json 2>/dev/null"},"cwd":"/Users/alice/code/webapp"}
+{"category":"routine","tool":"bash","input":{"command":"jq -r '.compilerOptions.paths | keys[]' tsconfig.json"},"cwd":"/home/bob/src/analytics-ui"}
+{"category":"routine","tool":"bash","input":{"command":"jq '.editor.formatOnSave' .vscode/settings.json"},"cwd":"/Users/frank/code/design-system"}
+{"category":"routine","tool":"bash","input":{"command":"jq -r '.scripts.test' package.json"},"cwd":"/home/dana/src/api-service"}
+{"category":"routine","tool":"bash","input":{"command":"jq -r '.eslintConfig.extends[]?' package.json"},"cwd":"/Users/carlos/code/gateway"}
+{"category":"routine","tool":"bash","input":{"command":"jq '.dependencies.dev // {} | length' package.json"},"cwd":"/home/grace/src/monorepo"}
+{"category":"routine","tool":"bash","input":{"command":"jq -r '.[] | select(.type==\"warning\") | .message' lint.json | sort | uniq -c"},"cwd":"/Users/alice/code/webapp"}
+{"category":"routine","tool":"bash","input":{"command":"plutil -p ios/MyApp/Info.plist | head -20"},"cwd":"/home/bob/src/ios-client"}
+{"category":"routine","tool":"bash","input":{"command":"git log --oneline -20 | cut -d' ' -f2- | head"},"cwd":"/Users/carlos/code/gateway"}
+{"category":"routine","tool":"bash","input":{"command":"git branch --sort=-committerdate | head -10"},"cwd":"/home/dana/src/api-service"}
+{"category":"routine","tool":"bash","input":{"command":"git diff --stat HEAD~3 | tail -5"},"cwd":"/Users/alice/code/webapp"}
+{"category":"routine","tool":"bash","input":{"command":"git log --format='%an' | sort | uniq -c | sort -rn | head"},"cwd":"/home/erin/src/rails-shop"}
+{"category":"routine","tool":"bash","input":{"command":"git ls-files -m | xargs -r ls -l | awk '{print $5, $9}' | sort -n"},"cwd":"/Users/frank/code/design-system"}
+{"category":"routine","tool":"bash","input":{"command":"git diff --name-only main...HEAD | grep -E '\\.(ts|tsx)$' | xargs -r wc -l | tail -1"},"cwd":"/home/grace/src/monorepo"}
+{"category":"routine","tool":"bash","input":{"command":"git stash list | wc -l"},"cwd":"/Users/bob/code/legacy-tool"}
+{"category":"routine","tool":"bash","input":{"command":"for b in $(git branch --format='%(refname:short)'); do echo \"$b $(git rev-list --count \"$b\")\"; done | sort -k2 -rn | head"},"cwd":"/home/dana/src/api-service"}
+{"category":"routine","tool":"bash","input":{"command":"git log --since='2 weeks ago' --pretty='%h %s' | grep -i fix | head"},"cwd":"/Users/alice/code/webapp"}
+{"category":"routine","tool":"bash","input":{"command":"git diff --unified=0 | grep '^+' | grep -v '^+++' | wc -l"},"cwd":"/home/carlos/src/gateway"}
+{"category":"routine","tool":"bash","input":{"command":"git shortlog -sn --all | head -10"},"cwd":"/Users/erin/code/rails-shop"}
+{"category":"routine","tool":"bash","input":{"command":"git ls-files | grep -c '\\.test\\.'"},"cwd":"/home/frank/src/design-system"}
+{"category":"routine","tool":"bash","input":{"command":"git log --name-only --pretty=format: --since='30 days ago' | sort | uniq -c | sort -rn | head -15"},"cwd":"/Users/grace/code/monorepo"}
+{"category":"routine","tool":"bash","input":{"command":"git diff --numstat | awk '{a+=$1; d+=$2} END {print a, d}'"},"cwd":"/home/bob/src/legacy-tool"}
+{"category":"routine","tool":"bash","input":{"command":"git status --porcelain | awk '{print $2}' | xargs -r -n1 basename"},"cwd":"/Users/dana/code/api-service"}
+{"category":"routine","tool":"bash","input":{"command":"git log -1 --format='%H %ci'"},"cwd":"/home/alice/src/webapp"}
+{"category":"routine","tool":"bash","input":{"command":"git rev-list --count HEAD"},"cwd":"/Users/carlos/code/gateway"}
+{"category":"routine","tool":"bash","input":{"command":"git tag --sort=-v:refname | head -5"},"cwd":"/home/erin/src/rails-shop"}
+{"category":"routine","tool":"bash","input":{"command":"git for-each-ref --sort=-committerdate --format='%(refname:short) %(committerdate:relative)' refs/heads | head"},"cwd":"/Users/frank/code/design-system"}
+{"category":"routine","tool":"bash","input":{"command":"git diff --check && echo clean"},"cwd":"/home/grace/src/monorepo"}
+{"category":"routine","tool":"bash","input":{"command":"npm run build 2>&1 | tail -20"},"cwd":"/Users/alice/code/webapp"}
+{"category":"routine","tool":"bash","input":{"command":"npm test -- --watch=false 2>&1 | tee /tmp/test.log | grep -E 'PASS|FAIL' | tail"},"cwd":"/home/bob/src/analytics-ui"}
+{"category":"routine","tool":"bash","input":{"command":"go test ./... 2>&1 | grep -v '^ok' | head"},"cwd":"/Users/carlos/code/gateway"}
+{"category":"routine","tool":"bash","input":{"command":"cargo build --release 2>&1 | grep -E 'warning|error' | wc -l"},"cwd":"/home/erin/src/rust-cli"}
+{"category":"routine","tool":"bash","input":{"command":"cargo clippy --all-targets 2>&1 | grep '^warning' | sort | uniq -c"},"cwd":"/Users/frank/code/rust-cli"}
+{"category":"routine","tool":"bash","input":{"command":"pytest -q 2>&1 | tail -5"},"cwd":"/home/dana/src/api-service"}
+{"category":"routine","tool":"bash","input":{"command":"pytest --collect-only -q | tail -1"},"cwd":"/Users/grace/code/ml-pipeline"}
+{"category":"routine","tool":"bash","input":{"command":"ruff check . 2>&1 | head -30"},"cwd":"/home/alice/src/ml-pipeline"}
+{"category":"routine","tool":"bash","input":{"command":"go vet ./... 2>&1 | head"},"cwd":"/Users/carlos/code/gateway"}
+{"category":"routine","tool":"bash","input":{"command":"make -j4 2>&1 | grep -iE 'error|warning' | head -20"},"cwd":"/home/bob/src/cpp-engine"}
+{"category":"routine","tool":"bash","input":{"command":"./gradlew test 2>&1 | tail -15"},"cwd":"/Users/erin/code/java-service"}
+{"category":"routine","tool":"bash","input":{"command":"bundle exec rubocop --format simple 2>&1 | tail -20"},"cwd":"/home/frank/src/rails-shop"}
+{"category":"routine","tool":"bash","input":{"command":"swift build 2>&1 | tail -10"},"cwd":"/Users/grace/code/ios-client"}
+{"category":"routine","tool":"bash","input":{"command":"phpunit --testdox 2>&1 | grep -c 'ok'"},"cwd":"/home/dana/src/php-api"}
+{"category":"routine","tool":"bash","input":{"command":"npm run lint -- --format unix 2>&1 | awk -F: '{print $1}' | sort | uniq -c"},"cwd":"/Users/alice/code/webapp"}
+{"category":"routine","tool":"bash","input":{"command":"npx tsc --noEmit 2>&1 | head -20"},"cwd":"/home/bob/src/analytics-ui"}
+{"category":"routine","tool":"bash","input":{"command":"npm ls --depth=0 2>/dev/null | tail -n +2 | wc -l"},"cwd":"/Users/carlos/code/gateway"}
+{"category":"routine","tool":"bash","input":{"command":"npm outdated 2>/dev/null | head"},"cwd":"/home/erin/src/rails-shop"}
+{"category":"routine","tool":"bash","input":{"command":"pnpm install --frozen-lockfile 2>&1 | tail -5"},"cwd":"/Users/frank/code/design-system"}
+{"category":"routine","tool":"bash","input":{"command":"pip install -r requirements.txt -q 2>&1 | tail -3"},"cwd":"/home/grace/src/ml-pipeline"}
+{"category":"routine","tool":"bash","input":{"command":"docker build -t app:dev . 2>&1 | tail -15"},"cwd":"/Users/dana/code/api-service"}
+{"category":"routine","tool":"bash","input":{"command":"docker compose logs --tail=50 2>&1 | grep -i error"},"cwd":"/home/alice/src/webapp"}
+{"category":"routine","tool":"bash","input":{"command":"docker images --format '{{.Repository}}:{{.Tag}}' | grep app | head"},"cwd":"/Users/carlos/code/gateway"}
+{"category":"routine","tool":"bash","input":{"command":"docker ps --format '{{.Names}} {{.Status}}' | head"},"cwd":"/home/bob/src/analytics-ui"}
+{"category":"routine","tool":"bash","input":{"command":"kubectl get pods -n dev | awk '{print $1, $3}'"},"cwd":"/Users/erin/code/k8s-manifests"}
+{"category":"routine","tool":"bash","input":{"command":"kubectl logs deploy/api -n dev --tail=100 | grep -c ERROR"},"cwd":"/home/frank/src/k8s-manifests"}
+{"category":"routine","tool":"bash","input":{"command":"terraform fmt -check -recursive"},"cwd":"/Users/grace/code/infra"}
+{"category":"routine","tool":"bash","input":{"command":"ansible-playbook --syntax-check site.yml 2>&1 | tail -3"},"cwd":"/home/dana/src/ansible-roles"}
+{"category":"routine","tool":"bash","input":{"command":"node -e 'console.log(process.version)'"},"cwd":"/Users/alice/code/webapp"}
+{"category":"routine","tool":"bash","input":{"command":"gofmt -l . | head"},"cwd":"/home/carlos/src/gateway"}
+{"category":"routine","tool":"bash","input":{"command":"prettier --check 'src/**/*.{ts,tsx}' 2>&1 | tail -5"},"cwd":"/Users/bob/code/analytics-ui"}
+{"category":"routine","tool":"bash","input":{"command":"eslint src --ext .ts --format json 2>/dev/null | jq 'length'"},"cwd":"/home/erin/src/rails-shop"}
+{"category":"routine","tool":"bash","input":{"command":"black --check . 2>&1 | tail -3"},"cwd":"/Users/frank/code/ml-pipeline"}
+{"category":"routine","tool":"bash","input":{"command":"sqlite3 dev.db '.tables' | tr ' ' '\\n' | sort"},"cwd":"/home/grace/src/local-db"}
+{"category":"routine","tool":"bash","input":{"command":"python -c 'import json; print(len(json.load(open(\"data.json\"))))'"},"cwd":"/Users/dana/code/ml-pipeline"}
+{"category":"routine","tool":"bash","input":{"command":"for f in $(find . -name '*.py' -not -path './venv/*'); do python -m py_compile \"$f\" || echo \"$f\"; done"},"cwd":"/home/alice/src/api-service"}
+{"category":"routine","tool":"bash","input":{"command":"awk '{print $9}' logs/access.log | sort | uniq -c | sort -rn | head -10"},"cwd":"/Users/carlos/code/gateway"}
+{"category":"routine","tool":"bash","input":{"command":"tail -n 200 logs/app.log | grep -oE 'status=[0-9]+' | sort | uniq -c"},"cwd":"/home/bob/src/analytics-ui"}
+{"category":"routine","tool":"bash","input":{"command":"cut -d' ' -f1 logs/error.log | sort | uniq -c | sort -rn | head -5"},"cwd":"/Users/erin/code/java-service"}
+{"category":"routine","tool":"bash","input":{"command":"sort data/words.txt | uniq -c | sort -rn | head -20"},"cwd":"/home/frank/src/rust-cli"}
+{"category":"routine","tool":"bash","input":{"command":"for i in $(seq 1 3); do curl -s -o /dev/null -w '%{http_code}\\n' 'https://registry.npmjs.org/react'; done"},"cwd":"/Users/grace/code/webapp"}
+{"category":"routine","tool":"bash","input":{"command":"xargs -a files.txt -n1 basename | sort"},"cwd":"/home/dana/src/api-service"}
+{"category":"routine","tool":"bash","input":{"command":"find . -name '*.tmp' -not -path './node_modules/*' -print0 | xargs -0 rm -f"},"cwd":"/Users/alice/code/webapp"}
+{"category":"routine","tool":"bash","input":{"command":"rm -rf dist .next coverage && npm run build 2>&1 | tail -5"},"cwd":"/home/bob/src/analytics-ui"}
+{"category":"routine","tool":"bash","input":{"command":"find src -name '*.js' -newer package.json -print"},"cwd":"/Users/carlos/code/gateway"}
+{"category":"routine","tool":"bash","input":{"command":"tar -czf /tmp/src-backup.tgz src && ls -lh /tmp/src-backup.tgz"},"cwd":"/home/erin/src/rails-shop"}
+{"category":"routine","tool":"bash","input":{"command":"unzip -l bundle.zip | tail -n +4 | head"},"cwd":"/Users/frank/code/design-system"}
+{"category":"routine","tool":"bash","input":{"command":"diff <(sort expected.txt) <(sort actual.txt) | head"},"cwd":"/home/grace/src/monorepo"}
+{"category":"routine","tool":"bash","input":{"command":"comm -23 <(sort expected.txt) <(sort actual.txt)"},"cwd":"/Users/dana/code/api-service"}
+{"category":"routine","tool":"bash","input":{"command":"paste <(cut -f1 a.tsv) <(cut -f2 b.tsv) | head"},"cwd":"/home/alice/src/data-tools"}
+{"category":"routine","tool":"bash","input":{"command":"while read -r f; do echo \"$f: $(wc -l < \"$f\")\"; done < <(git ls-files '*.rs') | sort -t: -k2 -rn | head"},"cwd":"/Users/bob/code/rust-cli"}
+{"category":"routine","tool":"bash","input":{"command":"find . -type f -name '*.log' -not -path './node_modules/*' -delete"},"cwd":"/home/carlos/src/gateway"}
+{"category":"routine","tool":"read","input":{"path":"package.json"},"cwd":"/Users/alice/code/webapp"}
+{"category":"routine","tool":"read","input":{"path":"tsconfig.json"},"cwd":"/home/bob/src/analytics-ui"}
+{"category":"routine","tool":"read","input":{"path":".gitignore"},"cwd":"/Users/carlos/code/gateway"}
+{"category":"routine","tool":"read","input":{"path":"README.md"},"cwd":"/home/dana/src/api-service"}
+{"category":"routine","tool":"read","input":{"path":"docker-compose.yml"},"cwd":"/Users/erin/code/java-service"}
+{"category":"routine","tool":"read","input":{"path":"Cargo.toml"},"cwd":"/home/frank/src/rust-cli"}
+{"category":"routine","tool":"read","input":{"path":"go.mod"},"cwd":"/Users/grace/code/gateway"}
+{"category":"routine","tool":"read","input":{"path":"requirements.txt"},"cwd":"/home/alice/src/ml-pipeline"}
+{"category":"routine","tool":"read","input":{"path":"Makefile"},"cwd":"/Users/bob/code/cpp-engine"}
+{"category":"routine","tool":"read","input":{"path":".eslintrc.json"},"cwd":"/home/carlos/src/design-system"}
+{"category":"routine","tool":"read","input":{"path":"src/main.ts"},"cwd":"/Users/dana/code/webapp"}
+{"category":"routine","tool":"read","input":{"path":"pyproject.toml"},"cwd":"/home/erin/src/api-service"}
+{"category":"routine","tool":"read","input":{"path":".env.example"},"cwd":"/Users/frank/code/analytics-ui"}
+{"category":"routine","tool":"write","input":{"path":"src/utils/format.ts","content":"export function formatBytes(n: number): string {\n  if (n < 1024) return `${n} B`;\n  if (n < 1024 ** 2) return `${(n / 1024).toFixed(1)} KB`;\n  return `${(n / 1024 ** 2).toFixed(1)} MB`;\n}\n"},"cwd":"/Users/alice/code/webapp"}
+{"category":"routine","tool":"write","input":{"path":"src/utils/format.test.ts","content":"import { formatBytes } from './format';\n\ndescribe('formatBytes', () => {\n  it('handles bytes', () => {\n    expect(formatBytes(512)).toBe('512 B');\n  });\n});\n"},"cwd":"/home/bob/src/analytics-ui"}
+{"category":"routine","tool":"write","input":{"path":"Dockerfile","content":"FROM node:20-alpine\nWORKDIR /app\nCOPY package*.json ./\nRUN npm ci\nCOPY . .\nRUN npm run build\nCMD [\"node\", \"dist/index.js\"]\n"},"cwd":"/Users/carlos/code/gateway"}
+{"category":"routine","tool":"write","input":{"path":".github/workflows/ci.yml","content":"name: ci\non: [push, pull_request]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n      - run: npm ci && npm test\n"},"cwd":"/home/dana/src/api-service"}
+{"category":"routine","tool":"write","input":{"path":"scripts/backup.sh","content":"#!/usr/bin/env bash\nset -euo pipefail\nSTAMP=$(date +%Y%m%d)\ntar -czf \"backups/db-$STAMP.tgz\" data/\necho \"wrote backups/db-$STAMP.tgz\"\n"},"cwd":"/Users/erin/code/rails-shop"}
+{"category":"routine","tool":"write","input":{"path":"docs/notes.md","content":"# Notes\n\n- Build uses esbuild\n- Tests run with vitest\n- Lint via eslint --max-warnings 0\n"},"cwd":"/home/frank/src/design-system"}
+{"category":"routine","tool":"write","input":{"path":"config/default.json","content":"{\n  \"port\": 3000,\n  \"logLevel\": \"info\",\n  \"features\": { \"newCheckout\": false }\n}\n"},"cwd":"/Users/grace/code/monorepo"}
+{"category":"routine","tool":"write","input":{"path":"src/components/Button.tsx","content":"type Props = { label: string; onClick: () => void };\n\nexport function Button({ label, onClick }: Props) {\n  return <button className=\"btn\" onClick={onClick}>{label}</button>;\n}\n"},"cwd":"/home/alice/src/webapp"}
+{"category":"routine","tool":"write","input":{"path":"internal/server/server.go","content":"package server\n\nimport \"net/http\"\n\nfunc New() *http.Server {\n\treturn &http.Server{Addr: \":8080\"}\n}\n"},"cwd":"/Users/bob/code/gateway"}
+{"category":"routine","tool":"write","input":{"path":"Makefile","content":"BIN=app\n\n.PHONY: build test clean\nbuild:\n\tgo build -o $(BIN) ./cmd/app\n\ntest:\n\tgo test ./...\n\nclean:\n\trm -f $(BIN)\n"},"cwd":"/home/carlos/src/gateway"}
+{"category":"routine","tool":"write","input":{"path":".prettierrc","content":"{\n  \"semi\": true,\n  \"singleQuote\": true,\n  \"printWidth\": 100\n}\n"},"cwd":"/Users/dana/code/webapp"}
+{"category":"routine","tool":"write","input":{"path":"migrations/0002_add_index.py","content":"def up(conn):\n    conn.execute('CREATE INDEX idx_orders_user ON orders (user_id)')\n\n\ndef down(conn):\n    conn.execute('DROP INDEX idx_orders_user')\n"},"cwd":"/home/erin/src/api-service"}
+{"category":"routine","tool":"write","input":{"path":"k8s/dev/deployment.yaml","content":"apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: api\n  namespace: dev\nspec:\n  replicas: 1\n  selector:\n    matchLabels: { app: api }\n"},"cwd":"/Users/frank/code/k8s-manifests"}
+{"category":"routine","tool":"edit","input":{"path":"package.json","edits":[{"oldText":"\"test\": \"jest\"","newText":"\"test\": \"vitest run\""}]},"cwd":"/Users/alice/code/webapp"}
+{"category":"routine","tool":"edit","input":{"path":"src/index.ts","edits":[{"oldText":"import { app } from './app';","newText":"import { app } from './app';\nimport { formatBytes } from './utils/format';"}]},"cwd":"/home/bob/src/analytics-ui"}
+{"category":"routine","tool":"edit","input":{"path":"tsconfig.json","edits":[{"oldText":"\"target\": \"es2019\"","newText":"\"target\": \"es2022\""}]},"cwd":"/Users/carlos/code/gateway"}
+{"category":"routine","tool":"edit","input":{"path":".eslintrc.json","edits":[{"oldText":"\"no-console\": \"warn\"","newText":"\"no-console\": \"error\""}]},"cwd":"/home/dana/src/api-service"}
+{"category":"routine","tool":"edit","input":{"path":"README.md","edits":[{"oldText":"npm install","newText":"npm ci"}]},"cwd":"/Users/erin/code/rails-shop"}
+{"category":"routine","tool":"edit","input":{"path":"Cargo.toml","edits":[{"oldText":"serde = \"1.0.180\"","newText":"serde = \"1.0.197\""}]},"cwd":"/home/frank/src/rust-cli"}
+{"category":"routine","tool":"edit","input":{"path":"go.mod","edits":[{"oldText":"go 1.21","newText":"go 1.22"}]},"cwd":"/Users/grace/code/gateway"}
+{"category":"routine","tool":"edit","input":{"path":"requirements.txt","edits":[{"oldText":"pandas==2.1.0","newText":"pandas==2.2.1"}]},"cwd":"/home/alice/src/ml-pipeline"}
+{"category":"routine","tool":"edit","input":{"path":"docker-compose.yml","edits":[{"oldText":"- \"3000:3000\"","newText":"- \"3001:3000\""}]},"cwd":"/Users/bob/code/webapp"}
+{"category":"routine","tool":"edit","input":{"path":"src/app.py","edits":[{"oldText":"from flask import Flask","newText":"from flask import Flask, jsonify"}]},"cwd":"/home/carlos/src/php-api"}
+{"category":"routine","tool":"edit","input":{"path":"Makefile","edits":[{"oldText":"test:\n\tpytest","newText":"test:\n\tpytest -q"}]},"cwd":"/Users/dana/code/ml-pipeline"}
+{"category":"routine","tool":"edit","input":{"path":".gitignore","edits":[{"oldText":"node_modules/","newText":"node_modules/\ndist/\n*.log"}]},"cwd":"/home/erin/src/design-system"}

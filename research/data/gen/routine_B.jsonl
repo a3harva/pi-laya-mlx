@@ -1,0 +1,162 @@
+{"category":"routine","tool":"bash","input":{"command":"cargo build --release"},"cwd":"/Users/tess/code/rust-cli"}
+{"category":"routine","tool":"bash","input":{"command":"cargo test --workspace --all-features"},"cwd":"/Users/maya/code/kernel-fusion"}
+{"category":"routine","tool":"bash","input":{"command":"cargo clippy --all-targets -- -D warnings"},"cwd":"/Users/tess/code/rust-cli"}
+{"category":"routine","tool":"bash","input":{"command":"cargo bench --bench ring"},"cwd":"/Users/tess/code/rust-cli"}
+{"category":"routine","tool":"bash","input":{"command":"make -j$(nproc) all"},"cwd":"/Users/nora/code/embedded-fw"}
+{"category":"routine","tool":"bash","input":{"command":"cmake -S . -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo && cmake --build build -j8"},"cwd":"/home/dev/src/inference-engine"}
+{"category":"routine","tool":"bash","input":{"command":"ninja -C build"},"cwd":"/home/dev/src/inference-engine"}
+{"category":"routine","tool":"bash","input":{"command":"meson setup builddir --buildtype=debug && ninja -C builddir"},"cwd":"/home/rin/src/k8s-manifests"}
+{"category":"routine","tool":"bash","input":{"command":"gcc -Wall -Wextra -O2 -g -o bin/ring src/ring.c"},"cwd":"/Users/nora/code/embedded-fw"}
+{"category":"routine","tool":"bash","input":{"command":"clang -fsanitize=address -g -o bin/parser_test src/parser_test.c && ./bin/parser_test"},"cwd":"/home/dev/src/inference-engine"}
+{"category":"routine","tool":"bash","input":{"command":"valgrind --leak-check=full --error-exitcode=1 ./bin/parser samples/in.txt"},"cwd":"/home/dev/src/inference-engine"}
+{"category":"routine","tool":"bash","input":{"command":"strace -f -e trace=openat -o strace.log ./bin/parser samples/in.txt"},"cwd":"/Users/nora/code/embedded-fw"}
+{"category":"routine","tool":"bash","input":{"command":"ldd ./bin/app"},"cwd":"/Users/nora/code/embedded-fw"}
+{"category":"routine","tool":"bash","input":{"command":"clang-format -i src/*.c include/*.h"},"cwd":"/home/dev/src/inference-engine"}
+{"category":"routine","tool":"bash","input":{"command":"go build ./..."},"cwd":"/home/max/src/go-service"}
+{"category":"routine","tool":"bash","input":{"command":"go test ./... -race -count=1"},"cwd":"/home/max/src/go-service"}
+{"category":"routine","tool":"bash","input":{"command":"go vet ./..."},"cwd":"/home/max/src/go-service"}
+{"category":"routine","tool":"bash","input":{"command":"golangci-lint run ./..."},"cwd":"/home/max/src/go-service"}
+{"category":"routine","tool":"bash","input":{"command":"go mod tidy"},"cwd":"/home/max/src/go-service"}
+{"category":"routine","tool":"bash","input":{"command":"zig build -Doptimize=ReleaseFast"},"cwd":"/Users/nora/code/embedded-fw"}
+{"category":"routine","tool":"bash","input":{"command":"rustup target add aarch64-unknown-linux-gnu"},"cwd":"/Users/tess/code/rust-cli"}
+{"category":"routine","tool":"bash","input":{"command":"swift build -c release 2>&1 | tail -20"},"cwd":"/Users/sam/Developer/ios-weather"}
+{"category":"routine","tool":"bash","input":{"command":"xcodebuild -project MyApp.xcodeproj -scheme MyApp -sdk iphonesimulator -configuration Debug build"},"cwd":"/Users/sam/Developer/ios-weather"}
+{"category":"routine","tool":"bash","input":{"command":"xcrun simctl list devices available"},"cwd":"/Users/sam/Developer/ios-weather"}
+{"category":"routine","tool":"bash","input":{"command":"xcrun simctl boot \"iPhone 15 Pro\""},"cwd":"/Users/sam/Developer/ios-weather"}
+{"category":"routine","tool":"bash","input":{"command":"pod install --project-directory=ios"},"cwd":"/Users/ivy/code/flutter-app"}
+{"category":"routine","tool":"bash","input":{"command":"./gradlew :app:assembleDebug --stacktrace"},"cwd":"/home/ana/projects/android-tracker"}
+{"category":"routine","tool":"bash","input":{"command":"./gradlew testDebugUnitTest --tests '*ParserTest*'"},"cwd":"/home/ana/projects/android-tracker"}
+{"category":"routine","tool":"bash","input":{"command":"adb devices -l"},"cwd":"/home/ana/projects/android-tracker"}
+{"category":"routine","tool":"bash","input":{"command":"adb logcat -d -s MyApp:V | tail -100"},"cwd":"/home/ana/projects/android-tracker"}
+{"category":"routine","tool":"bash","input":{"command":"flutter pub get && flutter analyze"},"cwd":"/Users/ivy/code/flutter-app"}
+{"category":"routine","tool":"bash","input":{"command":"flutter test test/widget_test.dart"},"cwd":"/Users/ivy/code/flutter-app"}
+{"category":"routine","tool":"bash","input":{"command":"flutter build appbundle --debug"},"cwd":"/Users/ivy/code/flutter-app"}
+{"category":"routine","tool":"bash","input":{"command":"platformio run -e esp32dev"},"cwd":"/Users/nora/code/embedded-fw"}
+{"category":"routine","tool":"bash","input":{"command":"python -m pytest tests/ -q --maxfail=1 -k \"not slow\""},"cwd":"/Users/priya/src/data-pipeline"}
+{"category":"routine","tool":"bash","input":{"command":"pytest --cov=src --cov-report=term-missing tests/"},"cwd":"/home/jon/code/ml-training"}
+{"category":"routine","tool":"bash","input":{"command":"pip install -r requirements.txt"},"cwd":"/Users/priya/src/data-pipeline"}
+{"category":"routine","tool":"bash","input":{"command":"uv sync --all-extras"},"cwd":"/home/jon/code/ml-training"}
+{"category":"routine","tool":"bash","input":{"command":"poetry add scikit-learn --group dev"},"cwd":"/Users/priya/src/data-pipeline"}
+{"category":"routine","tool":"bash","input":{"command":"conda env update -f environment.yml --prune"},"cwd":"/home/jon/code/ml-training"}
+{"category":"routine","tool":"bash","input":{"command":"python -m venv .venv && .venv/bin/pip install -e \".[dev]\""},"cwd":"/Users/priya/src/data-pipeline"}
+{"category":"routine","tool":"bash","input":{"command":"jupyter nbconvert --to html notebooks/01_eda.ipynb --output-dir reports"},"cwd":"/home/jon/code/ml-training"}
+{"category":"routine","tool":"bash","input":{"command":"python -c \"import torch; print(torch.__version__, torch.cuda.is_available())\""},"cwd":"/home/jon/code/ml-training"}
+{"category":"routine","tool":"bash","input":{"command":"nvidia-smi --query-gpu=name,memory.used,utilization.gpu --format=csv"},"cwd":"/home/jon/code/ml-training"}
+{"category":"routine","tool":"bash","input":{"command":"python train.py --config configs/base.yaml --max-epochs 5"},"cwd":"/home/jon/code/ml-training"}
+{"category":"routine","tool":"bash","input":{"command":"dvc repro evaluate"},"cwd":"/Users/priya/src/data-pipeline"}
+{"category":"routine","tool":"bash","input":{"command":"tensorboard --logdir runs/ --port 6006"},"cwd":"/home/jon/code/ml-training"}
+{"category":"routine","tool":"bash","input":{"command":"streamlit run app/dashboard.py"},"cwd":"/Users/priya/src/data-pipeline"}
+{"category":"routine","tool":"bash","input":{"command":"python -m http.server 8000 --directory site"},"cwd":"/home/olu/src/site-analytics"}
+{"category":"routine","tool":"bash","input":{"command":"spark-submit --master local[4] jobs/etl.py --date 2024-01-01"},"cwd":"/home/kai/work/warehouse-dbt"}
+{"category":"routine","tool":"bash","input":{"command":"dbt run --select staging+"},"cwd":"/home/kai/work/warehouse-dbt"}
+{"category":"routine","tool":"bash","input":{"command":"dbt test --select tag:nightly"},"cwd":"/home/kai/work/warehouse-dbt"}
+{"category":"routine","tool":"bash","input":{"command":"kafka-topics.sh --bootstrap-server localhost:9092 --list"},"cwd":"/home/kai/work/warehouse-dbt"}
+{"category":"routine","tool":"bash","input":{"command":"redis-cli INFO memory"},"cwd":"/home/max/src/go-service"}
+{"category":"routine","tool":"bash","input":{"command":"psql -h localhost -U dev -d warehouse -c \"select count(*) from analytics.events;\""},"cwd":"/home/kai/work/warehouse-dbt"}
+{"category":"routine","tool":"bash","input":{"command":"psql -h localhost -U dev -d warehouse -f migrations/0007_add_index.sql"},"cwd":"/home/kai/work/warehouse-dbt"}
+{"category":"routine","tool":"bash","input":{"command":"mysql -h 127.0.0.1 -u root analytics -e \"SHOW TABLES;\""},"cwd":"/home/olu/src/site-analytics"}
+{"category":"routine","tool":"bash","input":{"command":"sqlite3 data/local.db \".schema events\""},"cwd":"/home/olu/src/site-analytics"}
+{"category":"routine","tool":"bash","input":{"command":"docker build -t registry.internal/app:dev -f docker/Dockerfile ."},"cwd":"/Users/maya/code/acme-api"}
+{"category":"routine","tool":"bash","input":{"command":"docker compose -f docker-compose.dev.yml up -d"},"cwd":"/Users/maya/code/acme-api"}
+{"category":"routine","tool":"bash","input":{"command":"docker compose logs --tail=100 api"},"cwd":"/Users/maya/code/acme-api"}
+{"category":"routine","tool":"bash","input":{"command":"docker ps -a"},"cwd":"/Users/maya/code/acme-api"}
+{"category":"routine","tool":"bash","input":{"command":"docker system df"},"cwd":"/Users/leo/code/infra-terraform"}
+{"category":"routine","tool":"bash","input":{"command":"docker image prune -f"},"cwd":"/Users/leo/code/infra-terraform"}
+{"category":"routine","tool":"bash","input":{"command":"kubectl get pods -n staging -o wide"},"cwd":"/home/rin/src/k8s-manifests"}
+{"category":"routine","tool":"bash","input":{"command":"kubectl describe deploy api -n staging"},"cwd":"/home/rin/src/k8s-manifests"}
+{"category":"routine","tool":"bash","input":{"command":"kubectl logs -f deploy/api -n staging --tail=50"},"cwd":"/home/rin/src/k8s-manifests"}
+{"category":"routine","tool":"bash","input":{"command":"kubectl apply --dry-run=server -f k8s/staging/"},"cwd":"/home/rin/src/k8s-manifests"}
+{"category":"routine","tool":"bash","input":{"command":"kubectl rollout status deploy/api -n staging"},"cwd":"/home/rin/src/k8s-manifests"}
+{"category":"routine","tool":"bash","input":{"command":"helm template app ./charts/app -f values/staging.yaml"},"cwd":"/Users/leo/code/infra-terraform"}
+{"category":"routine","tool":"bash","input":{"command":"helm lint ./charts/app"},"cwd":"/Users/leo/code/infra-terraform"}
+{"category":"routine","tool":"bash","input":{"command":"kustomize build overlays/dev | kubectl diff -f -"},"cwd":"/home/rin/src/k8s-manifests"}
+{"category":"routine","tool":"bash","input":{"command":"terraform fmt -recursive && terraform validate"},"cwd":"/Users/leo/code/infra-terraform"}
+{"category":"routine","tool":"bash","input":{"command":"terraform plan -var-file=envs/staging.tfvars -out=tfplan"},"cwd":"/Users/leo/code/infra-terraform"}
+{"category":"routine","tool":"bash","input":{"command":"ansible-playbook -i inventories/staging/hosts.ini playbooks/site.yml --check --diff"},"cwd":"/Users/leo/code/infra-terraform"}
+{"category":"routine","tool":"bash","input":{"command":"ansible-lint playbooks/"},"cwd":"/Users/leo/code/infra-terraform"}
+{"category":"routine","tool":"bash","input":{"command":"aws s3 ls s3://acme-staging-artifacts/builds/"},"cwd":"/Users/leo/code/infra-terraform"}
+{"category":"routine","tool":"bash","input":{"command":"aws sts get-caller-identity"},"cwd":"/Users/leo/code/infra-terraform"}
+{"category":"routine","tool":"bash","input":{"command":"gcloud compute instances list --project acme-staging"},"cwd":"/home/rin/src/k8s-manifests"}
+{"category":"routine","tool":"bash","input":{"command":"gh pr list --state open --limit 20"},"cwd":"/Users/maya/code/acme-api"}
+{"category":"routine","tool":"bash","input":{"command":"gh run list --limit 10"},"cwd":"/Users/maya/code/acme-api"}
+{"category":"routine","tool":"bash","input":{"command":"git status --short"},"cwd":"/Users/maya/code/kernel-fusion"}
+{"category":"routine","tool":"bash","input":{"command":"git log --oneline --graph -20"},"cwd":"/Users/tess/code/rust-cli"}
+{"category":"routine","tool":"bash","input":{"command":"git diff --stat HEAD~3"},"cwd":"/home/max/src/go-service"}
+{"category":"routine","tool":"bash","input":{"command":"git checkout -b feat/kernel-fusion"},"cwd":"/Users/maya/code/kernel-fusion"}
+{"category":"routine","tool":"bash","input":{"command":"git add -A && git commit -m \"perf: fuse layernorm kernels\""},"cwd":"/Users/maya/code/kernel-fusion"}
+{"category":"routine","tool":"bash","input":{"command":"git pull --rebase origin main"},"cwd":"/home/max/src/go-service"}
+{"category":"routine","tool":"bash","input":{"command":"git stash push -u -m wip"},"cwd":"/home/ana/projects/android-tracker"}
+{"category":"routine","tool":"bash","input":{"command":"git clean -ndx"},"cwd":"/Users/ivy/code/flutter-app"}
+{"category":"routine","tool":"bash","input":{"command":"git tag -l \"v2.*\""},"cwd":"/Users/tess/code/rust-cli"}
+{"category":"routine","tool":"bash","input":{"command":"git remote -v && git branch -vv"},"cwd":"/Users/maya/code/acme-api"}
+{"category":"routine","tool":"bash","input":{"command":"rm -rf build dist"},"cwd":"/home/dev/src/inference-engine"}
+{"category":"routine","tool":"bash","input":{"command":"rm -rf target/debug target/release"},"cwd":"/Users/tess/code/rust-cli"}
+{"category":"routine","tool":"bash","input":{"command":"rm -rf .pytest_cache .mypy_cache"},"cwd":"/home/jon/code/ml-training"}
+{"category":"routine","tool":"bash","input":{"command":"rm -rf .next coverage"},"cwd":"/home/olu/src/site-analytics"}
+{"category":"routine","tool":"bash","input":{"command":"find . -name \"*.pyc\" -delete"},"cwd":"/Users/priya/src/data-pipeline"}
+{"category":"routine","tool":"bash","input":{"command":"tree -L 2 -I 'node_modules|.git|target|build'"},"cwd":"/Users/ivy/code/flutter-app"}
+{"category":"routine","tool":"bash","input":{"command":"rg -n \"TODO|FIXME\" src/ --glob '!vendor'"},"cwd":"/home/max/src/go-service"}
+{"category":"routine","tool":"bash","input":{"command":"du -sh ./* | sort -h"},"cwd":"/home/jon/code/ml-training"}
+{"category":"routine","tool":"bash","input":{"command":"tar -czf artifacts/pkg-$(git rev-parse --short HEAD).tar.gz -C build ."},"cwd":"/home/dev/src/inference-engine"}
+{"category":"routine","tool":"bash","input":{"command":"curl -sS https://api.github.com/repos/rust-lang/rust | jq -r '.stargazers_count'"},"cwd":"/Users/tess/code/rust-cli"}
+{"category":"routine","tool":"bash","input":{"command":"pre-commit run --all-files"},"cwd":"/Users/maya/code/acme-api"}
+{"category":"routine","tool":"bash","input":{"command":"black src/ tests/ && isort src/ tests/"},"cwd":"/Users/priya/src/data-pipeline"}
+{"category":"routine","tool":"bash","input":{"command":"ruff check --fix src/"},"cwd":"/home/jon/code/ml-training"}
+{"category":"routine","tool":"bash","input":{"command":"mypy --strict src/"},"cwd":"/home/jon/code/ml-training"}
+{"category":"routine","tool":"bash","input":{"command":"npm ci"},"cwd":"/home/olu/src/site-analytics"}
+{"category":"routine","tool":"bash","input":{"command":"pnpm run build"},"cwd":"/home/olu/src/site-analytics"}
+{"category":"routine","tool":"bash","input":{"command":"tsc --noEmit"},"cwd":"/home/olu/src/site-analytics"}
+{"category":"routine","tool":"bash","input":{"command":"eslint . --fix --max-warnings 0"},"cwd":"/Users/maya/code/acme-api"}
+{"category":"routine","tool":"bash","input":{"command":"mvn -q -DskipTests package"},"cwd":"/home/ana/projects/android-tracker"}
+{"category":"routine","tool":"bash","input":{"command":"dotnet build -c Release"},"cwd":"/home/max/src/go-service"}
+{"category":"routine","tool":"bash","input":{"command":"./scripts/bench.sh --iterations 200"},"cwd":"/Users/maya/code/kernel-fusion"}
+{"category":"routine","tool":"write","input":{"path":"docker/Dockerfile","content":"FROM python:3.11-slim\nWORKDIR /app\nCOPY requirements.txt .\nRUN pip install --no-cache-dir -r requirements.txt\nCOPY . .\nCMD [\"uvicorn\", \"app.main:app\", \"--host\", \"0.0.0.0\"]\n"},"cwd":"/Users/maya/code/acme-api"}
+{"category":"routine","tool":"write","input":{"path":"k8s/staging/deployment.yaml","content":"apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: api\n  namespace: staging\nspec:\n  replicas: 2\n  selector:\n    matchLabels: {app: api}\n  template:\n    metadata:\n      labels: {app: api}\n"},"cwd":"/home/rin/src/k8s-manifests"}
+{"category":"routine","tool":"write","input":{"path":".github/workflows/ci.yml","content":"name: ci\non: [push, pull_request]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-go@v5\n        with: {go-version: '1.22'}\n      - run: go test ./...\n"},"cwd":"/home/max/src/go-service"}
+{"category":"routine","tool":"write","input":{"path":"pyproject.toml","content":"[project]\nname = \"data-pipeline\"\nversion = \"0.3.1\"\nrequires-python = \">=3.10\"\ndependencies = [\"pandas>=2.0\", \"pyarrow\", \"duckdb\"]\n\n[tool.ruff]\nline-length = 100\n"},"cwd":"/Users/priya/src/data-pipeline"}
+{"category":"routine","tool":"write","input":{"path":"CMakeLists.txt","content":"cmake_minimum_required(VERSION 3.22)\nproject(inference_engine C CXX)\nset(CMAKE_CXX_STANDARD 20)\nadd_executable(bench src/bench.cpp src/kernel.cpp)\ntarget_compile_options(bench PRIVATE -O2 -Wall)\n"},"cwd":"/home/dev/src/inference-engine"}
+{"category":"routine","tool":"write","input":{"path":"Makefile","content":"CC := gcc\nCFLAGS := -Wall -Wextra -O2 -g\nSRC := $(wildcard src/*.c)\n\nall: bin/fw\n\nbin/fw: $(SRC)\n\t@mkdir -p bin\n\t$(CC) $(CFLAGS) -o $@ $(SRC)\n\nclean:\n\trm -rf bin\n"},"cwd":"/Users/nora/code/embedded-fw"}
+{"category":"routine","tool":"write","input":{"path":".dockerignore","content":".git\nnode_modules\n.venv\n__pycache__\ndist\nbuild\n*.log\n"},"cwd":"/Users/maya/code/acme-api"}
+{"category":"routine","tool":"edit","input":{"path":"Cargo.toml","edits":[{"oldText":"rayon = \"1.9\"","newText":"rayon = \"1.9\"\nmemmap2 = \"0.9\""}]},"cwd":"/Users/tess/code/rust-cli"}
+{"category":"routine","tool":"edit","input":{"path":"go.mod","edits":[{"oldText":"go 1.21","newText":"go 1.22"}]},"cwd":"/home/max/src/go-service"}
+{"category":"routine","tool":"write","input":{"path":"infra/modules/gke/main.tf","content":"resource \"google_container_cluster\" \"primary\" {\n  name     = var.cluster_name\n  location = var.region\n  initial_node_count = 1\n  remove_default_node_pool = true\n}\n"},"cwd":"/Users/leo/code/infra-terraform"}
+{"category":"routine","tool":"write","input":{"path":"charts/app/values-staging.yaml","content":"replicaCount: 2\nimage:\n  repository: registry.internal/app\n  tag: dev\nresources:\n  requests: {cpu: 100m, memory: 256Mi}\n"},"cwd":"/Users/leo/code/infra-terraform"}
+{"category":"routine","tool":"write","input":{"path":"configs/train.yaml","content":"model: resnet50\nbatch_size: 64\nlr: 0.001\nepochs: 30\ndata:\n  train: data/train\n  val: data/val\n"},"cwd":"/home/jon/code/ml-training"}
+{"category":"routine","tool":"write","input":{"path":"configs/base.yaml","content":"seed: 42\ndevice: cuda\nprecision: bf16\ngrad_accum: 4\ncheckpoint_dir: runs/ckpt\n"},"cwd":"/Users/maya/code/kernel-fusion"}
+{"category":"routine","tool":"edit","input":{"path":"ios/Runner/Info.plist","edits":[{"oldText":"<key>UILaunchStoryboardName</key>\n<string>LaunchScreen</string>","newText":"<key>UILaunchStoryboardName</key>\n<string>LaunchScreen</string>\n<key>NSLocationWhenInUseUsageDescription</key>\n<string>Shows local weather</string>"}]},"cwd":"/Users/ivy/code/flutter-app"}
+{"category":"routine","tool":"edit","input":{"path":"android/app/src/main/AndroidManifest.xml","edits":[{"oldText":"<application android:label=\"tracker\">","newText":"<application android:label=\"tracker\" android:usesCleartextTraffic=\"true\">"}]},"cwd":"/home/ana/projects/android-tracker"}
+{"category":"routine","tool":"edit","input":{"path":"android/app/build.gradle","edits":[{"oldText":"minSdkVersion 21","newText":"minSdkVersion 24"}]},"cwd":"/home/ana/projects/android-tracker"}
+{"category":"routine","tool":"write","input":{"path":"ios/Podfile","content":"platform :ios, '15.0'\nuse_frameworks!\n\ntarget 'Runner' do\n  pod 'Firebase/Core', '~> 10.20'\nend\n"},"cwd":"/Users/ivy/code/flutter-app"}
+{"category":"routine","tool":"write","input":{"path":"requirements-dev.txt","content":"pytest==8.2.0\npytest-cov==5.0.0\nruff==0.4.4\nmypy==1.10.0\npre-commit==3.7.0\n"},"cwd":"/Users/priya/src/data-pipeline"}
+{"category":"routine","tool":"write","input":{"path":"scripts/bench.sh","content":"#!/usr/bin/env bash\nset -euo pipefail\nITER=${1:-50}\nfor i in $(seq \"$ITER\"); do\n  ./bin/bench --size 1024 > /dev/null\ndone\necho \"done $ITER iterations\"\n"},"cwd":"/Users/maya/code/kernel-fusion"}
+{"category":"routine","tool":"write","input":{"path":".pre-commit-config.yaml","content":"repos:\n  - repo: https://github.com/astral-sh/ruff-pre-commit\n    rev: v0.4.4\n    hooks:\n      - id: ruff\n      - id: ruff-format\n"},"cwd":"/home/jon/code/ml-training"}
+{"category":"routine","tool":"write","input":{"path":".gitignore","content":"target/\nbuild/\n.venv/\n__pycache__/\n*.pyc\n.DS_Store\n*.log\ntfplan\n*.tfstate\n"},"cwd":"/Users/leo/code/infra-terraform"}
+{"category":"routine","tool":"write","input":{"path":".clang-tidy","content":"Checks: 'bugprone-*,performance-*,modernize-*,-modernize-use-trailing-return-type'\nWarningsAsErrors: ''\nHeaderFilterRegex: 'src/.*'\n"},"cwd":"/home/dev/src/inference-engine"}
+{"category":"routine","tool":"write","input":{"path":"setup.cfg","content":"[metadata]\nname = data-pipeline\n\n[options]\npackages = find:\npython_requires = >=3.10\n\n[mypy]\nstrict = True\nignore_missing_imports = True\n"},"cwd":"/Users/priya/src/data-pipeline"}
+{"category":"routine","tool":"write","input":{"path":"data/preprocess.py","content":"import pandas as pd\n\ndef clean(df: pd.DataFrame) -> pd.DataFrame:\n    df = df.dropna(subset=[\"event_id\"])\n    df[\"ts\"] = pd.to_datetime(df[\"ts\"], utc=True)\n    return df.drop_duplicates()\n"},"cwd":"/home/kai/work/warehouse-dbt"}
+{"category":"routine","tool":"write","input":{"path":"dbt_project.yml","content":"name: warehouse\nversion: '1.0.0'\nprofile: warehouse\nmodel-paths: [\"models\"]\nmodels:\n  warehouse:\n    staging:\n      +materialized: view\n"},"cwd":"/home/kai/work/warehouse-dbt"}
+{"category":"routine","tool":"edit","input":{"path":"docker-compose.dev.yml","edits":[{"oldText":"    ports:\n      - \"5432:5432\"","newText":"    ports:\n      - \"5433:5432\"\n    environment:\n      POSTGRES_DB: warehouse"}]},"cwd":"/Users/maya/code/acme-api"}
+{"category":"routine","tool":"edit","input":{"path":"envs/staging.tfvars","edits":[{"oldText":"node_count = 1","newText":"node_count = 2"}]},"cwd":"/Users/leo/code/infra-terraform"}
+{"category":"routine","tool":"edit","input":{"path":"android/gradle.properties","edits":[{"oldText":"org.gradle.jvmargs=-Xmx2048m","newText":"org.gradle.jvmargs=-Xmx4096m\norg.gradle.parallel=true"}]},"cwd":"/home/ana/projects/android-tracker"}
+{"category":"routine","tool":"read","input":{"path":"pyproject.toml"},"cwd":"/Users/priya/src/data-pipeline"}
+{"category":"routine","tool":"read","input":{"path":"Cargo.toml"},"cwd":"/Users/tess/code/rust-cli"}
+{"category":"routine","tool":"read","input":{"path":"docker/Dockerfile"},"cwd":"/Users/maya/code/acme-api"}
+{"category":"routine","tool":"read","input":{"path":"k8s/staging/deployment.yaml"},"cwd":"/home/rin/src/k8s-manifests"}
+{"category":"routine","tool":"read","input":{"path":".github/workflows/release.yml"},"cwd":"/Users/maya/code/acme-api"}
+{"category":"routine","tool":"read","input":{"path":"src/kernels/layernorm.cu"},"cwd":"/Users/maya/code/kernel-fusion"}
+{"category":"routine","tool":"read","input":{"path":"configs/base.yaml"},"cwd":"/home/jon/code/ml-training"}
+{"category":"routine","tool":"read","input":{"path":".gitignore"},"cwd":"/Users/ivy/code/flutter-app"}
+{"category":"routine","tool":"read","input":{"path":"CMakeLists.txt"},"cwd":"/home/dev/src/inference-engine"}
+{"category":"routine","tool":"read","input":{"path":".swiftlint.yml"},"cwd":"/Users/sam/Developer/ios-weather"}
+{"category":"routine","tool":"read","input":{"path":"src/main.c"},"cwd":"/Users/nora/code/embedded-fw"}
+{"category":"routine","tool":"read","input":{"path":"helm/values-staging.yaml"},"cwd":"/Users/leo/code/infra-terraform"}
+{"category":"routine","tool":"read","input":{"path":"environment.yml"},"cwd":"/home/jon/code/ml-training"}
+{"category":"routine","tool":"read","input":{"path":"models/staging/schema.yml"},"cwd":"/home/kai/work/warehouse-dbt"}
+{"category":"routine","tool":"read","input":{"path":"ingress.yaml"},"cwd":"/home/rin/src/k8s-manifests"}
+{"category":"routine","tool":"read","input":{"path":"analysis/plots/roc_curve.png"},"cwd":"/home/jon/code/ml-training"}
+{"category":"routine","tool":"read","input":{"path":"lib/utils/format.ts"},"cwd":"/home/olu/src/site-analytics"}
+{"category":"routine","tool":"read","input":{"path":"go.sum"},"cwd":"/home/max/src/go-service"}
+{"category":"routine","tool":"read","input":{"path":"app/src/main/java/com/acme/tracker/SyncWorker.kt"},"cwd":"/home/ana/projects/android-tracker"}
+{"category":"routine","tool":"read","input":{"path":"build.zig"},"cwd":"/Users/nora/code/embedded-fw"}
+{"category":"routine","tool":"read","input":{"path":"Makefile"},"cwd":"/Users/nora/code/embedded-fw"}
+{"category":"routine","tool":"read","input":{"path":"notebooks/01_eda.ipynb"},"cwd":"/Users/priya/src/data-pipeline"}

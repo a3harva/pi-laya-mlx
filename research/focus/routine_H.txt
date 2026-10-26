@@ -1,0 +1,1 @@
+very short everyday commands of 1 to 6 words that agents run constantly: ls variants, pwd, cat/head/tail of project files, git status/log/diff/branch/show, version checks (node -v, python --version), which, echo of variables such as echo $PATH, ps/lsof/top inspection, du/df of project dirs, tsc/eslint/prettier/mypy runs, make targets, test runners

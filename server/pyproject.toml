@@ -1,0 +1,28 @@
+[project]
+name = "laya-guard"
+version = "0.1.0"
+description = "Local tool-call safety guard for coding agents, powered by the Laya decision model on MLX"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "mlx-embeddings==0.1.0",
+    "huggingface_hub>=0.20",
+    "fastapi>=0.110",
+    "uvicorn>=0.27",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "httpx>=0.27"]
+# CARE static engine (MIT) for structural evidence; pinned to the commit evaluated.
+evidence = ["care-guard @ git+https://github.com/prisma-research/CARE@9d6852e2ee79ec0ac1d6579dcfb8da0b0be5b2c2"]
+
+[project.scripts]
+laya-guard-serve = "laya_guard.server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["laya_guard"]

@@ -1,0 +1,156 @@
+{"category":"routine","tool":"bash","input":{"command":"git status --short --branch"},"cwd":"/Users/maya/code/atlas-web"}
+{"category":"routine","tool":"bash","input":{"command":"git diff --stat"},"cwd":"/home/dev/src/payments-api"}
+{"category":"routine","tool":"bash","input":{"command":"git add src/components/"},"cwd":"/Users/sam/projects/dashboard-ui"}
+{"category":"routine","tool":"bash","input":{"command":"git commit -m 'fix: handle empty user list'"},"cwd":"/Users/maya/code/atlas-web"}
+{"category":"routine","tool":"bash","input":{"command":"git checkout -b feature/auth-refresh"},"cwd":"/home/alex/src/orders-service"}
+{"category":"routine","tool":"bash","input":{"command":"git switch main"},"cwd":"/Users/priya/code/notely"}
+{"category":"routine","tool":"bash","input":{"command":"git pull --rebase origin main"},"cwd":"/home/dev/src/payments-api"}
+{"category":"routine","tool":"bash","input":{"command":"git fetch --all --prune"},"cwd":"/Users/jordan/src/rust-cli"}
+{"category":"routine","tool":"bash","input":{"command":"git stash push -m 'wip: profile layout'}","cwd":"/Users/sam/projects/dashboard-ui"}
+{"category":"routine","tool":"bash","input":{"command":"git stash pop"},"cwd":"/Users/sam/projects/dashboard-ui"}
+{"category":"routine","tool":"bash","input":{"command":"git log --oneline -10"},"cwd":"/home/lee/src/analytics-etl"}
+{"category":"routine","tool":"bash","input":{"command":"git show HEAD --stat"},"cwd":"/Users/maya/code/atlas-web"}
+{"category":"routine","tool":"bash","input":{"command":"git blame src/server/routes.ts"},"cwd":"/home/dev/src/payments-api"}
+{"category":"routine","tool":"bash","input":{"command":"git merge feature/auth-refresh"},"cwd":"/home/alex/src/orders-service"}
+{"category":"routine","tool":"bash","input":{"command":"git rebase origin/main"},"cwd":"/Users/priya/code/notely"}
+{"category":"routine","tool":"bash","input":{"command":"git tag -a v0.3.0 -m 'release v0.3.0'"},"cwd":"/Users/jordan/src/rust-cli"}
+{"category":"routine","tool":"bash","input":{"command":"git remote -v"},"cwd":"/home/lee/src/analytics-etl"}
+{"category":"routine","tool":"bash","input":{"command":"git push -u origin feature/auth-refresh"},"cwd":"/home/alex/src/orders-service"}
+{"category":"routine","tool":"bash","input":{"command":"git cherry-pick 4f2a9c1"},"cwd":"/Users/maya/code/atlas-web"}
+{"category":"routine","tool":"bash","input":{"command":"git restore src/index.ts"},"cwd":"/Users/priya/code/notely"}
+{"category":"routine","tool":"bash","input":{"command":"git rm --cached .env.local"},"cwd":"/home/dev/src/payments-api"}
+{"category":"routine","tool":"bash","input":{"command":"git worktree add ../notely-hotfix hotfix"},"cwd":"/Users/priya/code/notely"}
+{"category":"routine","tool":"bash","input":{"command":"git clean -fd"},"cwd":"/home/jamie/src/go-gateway"}
+{"category":"routine","tool":"bash","input":{"command":"git diff --name-only --cached"},"cwd":"/Users/sam/projects/dashboard-ui"}
+{"category":"routine","tool":"bash","input":{"command":"git config --get user.email"},"cwd":"/Users/maya/code/atlas-web"}
+{"category":"routine","tool":"bash","input":{"command":"git branch -d feature/old-header"},"cwd":"/Users/sam/projects/dashboard-ui"}
+{"category":"routine","tool":"bash","input":{"command":"git switch -c fix/typo-in-readme"},"cwd":"/home/lee/src/analytics-etl"}
+{"category":"routine","tool":"bash","input":{"command":"git pull origin develop"},"cwd":"/home/alex/src/orders-service"}
+{"category":"routine","tool":"bash","input":{"command":"git stash list"},"cwd":"/Users/jordan/src/rust-cli"}
+{"category":"routine","tool":"bash","input":{"command":"git log --graph --oneline --all -20"},"cwd":"/Users/priya/code/notely"}
+{"category":"routine","tool":"bash","input":{"command":"npm install"},"cwd":"/Users/maya/code/atlas-web"}
+{"category":"routine","tool":"bash","input":{"command":"npm ci"},"cwd":"/Users/sam/projects/dashboard-ui"}
+{"category":"routine","tool":"bash","input":{"command":"npm run build"},"cwd":"/Users/priya/code/notely"}
+{"category":"routine","tool":"bash","input":{"command":"npm test -- --watch=false"},"cwd":"/home/dev/src/payments-api"}
+{"category":"routine","tool":"bash","input":{"command":"npm run lint"},"cwd":"/Users/maya/code/atlas-web"}
+{"category":"routine","tool":"bash","input":{"command":"npm run format"},"cwd":"/Users/sam/projects/dashboard-ui"}
+{"category":"routine","tool":"bash","input":{"command":"npm install --save-dev vitest"},"cwd":"/Users/priya/code/notely"}
+{"category":"routine","tool":"bash","input":{"command":"npm uninstall lodash"},"cwd":"/Users/maya/code/atlas-web"}
+{"category":"routine","tool":"bash","input":{"command":"npx tsc --noEmit"},"cwd":"/Users/sam/projects/dashboard-ui"}
+{"category":"routine","tool":"bash","input":{"command":"yarn install"},"cwd":"/home/lee/src/analytics-etl"}
+{"category":"routine","tool":"bash","input":{"command":"yarn add axios"},"cwd":"/home/lee/src/analytics-etl"}
+{"category":"routine","tool":"bash","input":{"command":"pnpm install"},"cwd":"/Users/priya/code/notely"}
+{"category":"routine","tool":"bash","input":{"command":"pnpm run test"},"cwd":"/Users/priya/code/notely"}
+{"category":"routine","tool":"bash","input":{"command":"pip install -r requirements.txt"},"cwd":"/home/jamie/src/ml-pipeline"}
+{"category":"routine","tool":"bash","input":{"command":"python -m venv .venv"},"cwd":"/Users/lee/src/flask-blog"}
+{"category":"routine","tool":"bash","input":{"command":"source .venv/bin/activate && pip install -e ."},"cwd":"/Users/lee/src/flask-blog"}
+{"category":"routine","tool":"bash","input":{"command":"poetry install"},"cwd":"/home/jamie/src/ml-pipeline"}
+{"category":"routine","tool":"bash","input":{"command":"poetry add requests"},"cwd":"/home/jamie/src/ml-pipeline"}
+{"category":"routine","tool":"bash","input":{"command":"uv sync"},"cwd":"/Users/lee/src/fastapi-notes"}
+{"category":"routine","tool":"bash","input":{"command":"uv add httpx"},"cwd":"/Users/lee/src/fastapi-notes"}
+{"category":"routine","tool":"bash","input":{"command":"cargo build --release"},"cwd":"/Users/jordan/src/rust-cli"}
+{"category":"routine","tool":"bash","input":{"command":"cargo test"},"cwd":"/Users/jordan/src/rust-cli"}
+{"category":"routine","tool":"bash","input":{"command":"cargo add serde --features derive"},"cwd":"/Users/jordan/src/rust-cli"}
+{"category":"routine","tool":"bash","input":{"command":"go mod tidy"},"cwd":"/home/jamie/src/go-gateway"}
+{"category":"routine","tool":"bash","input":{"command":"go get github.com/gin-gonic/gin"},"cwd":"/home/jamie/src/go-gateway"}
+{"category":"routine","tool":"bash","input":{"command":"go test ./..."},"cwd":"/home/jamie/src/go-gateway"}
+{"category":"routine","tool":"bash","input":{"command":"bundle install"},"cwd":"/Users/nina/code/rails-shop"}
+{"category":"routine","tool":"bash","input":{"command":"bundle add rspec"},"cwd":"/Users/nina/code/rails-shop"}
+{"category":"routine","tool":"bash","input":{"command":"composer install"},"cwd":"/home/carlos/src/laravel-cms"}
+{"category":"routine","tool":"bash","input":{"command":"./vendor/bin/phpunit --testsuite unit"},"cwd":"/home/carlos/src/laravel-cms"}
+{"category":"routine","tool":"bash","input":{"command":"mvn test"},"cwd":"/Users/erin/src/java-inventory"}
+{"category":"routine","tool":"bash","input":{"command":"./gradlew build"},"cwd":"/Users/erin/src/java-inventory"}
+{"category":"routine","tool":"bash","input":{"command":"swift build"},"cwd":"/Users/tomas/code/SwiftNotes"}
+{"category":"routine","tool":"bash","input":{"command":"pod install"},"cwd":"/Users/tomas/code/SwiftNotes"}
+{"category":"routine","tool":"bash","input":{"command":"mix deps.get"},"cwd":"/home/ana/src/phoenix-chat"}
+{"category":"routine","tool":"bash","input":{"command":"dotnet restore"},"cwd":"/Users/ben/src/inventory-api"}
+{"category":"routine","tool":"bash","input":{"command":"flutter pub get"},"cwd":"/home/ravi/src/mobile-app"}
+{"category":"routine","tool":"bash","input":{"command":"deno task test"},"cwd":"/Users/kai/src/deno-edge"}
+{"category":"routine","tool":"bash","input":{"command":"bun install"},"cwd":"/Users/kai/src/bun-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"make build"},"cwd":"/home/ana/src/phoenix-chat"}
+{"category":"routine","tool":"bash","input":{"command":"psql -d app_dev -c 'SELECT count(*) FROM users;'"},"cwd":"/home/dev/src/payments-api"}
+{"category":"routine","tool":"bash","input":{"command":"psql -d app_dev -f db/migrations/001_init.sql"},"cwd":"/home/dev/src/payments-api"}
+{"category":"routine","tool":"bash","input":{"command":"createdb app_dev"},"cwd":"/Users/lee/src/fastapi-notes"}
+{"category":"routine","tool":"bash","input":{"command":"psql -d app_dev -c '\\dt'"},"cwd":"/Users/lee/src/fastapi-notes"}
+{"category":"routine","tool":"bash","input":{"command":"psql -d app_dev -c 'EXPLAIN ANALYZE SELECT * FROM orders WHERE user_id = 42;'"},"cwd":"/home/alex/src/orders-service"}
+{"category":"routine","tool":"bash","input":{"command":"mysql -u root -p app_dev -e 'SHOW TABLES;'"},"cwd":"/home/carlos/src/laravel-cms"}
+{"category":"routine","tool":"bash","input":{"command":"mysql -u dev -pdev app_dev < schema.sql"},"cwd":"/home/carlos/src/laravel-cms"}
+{"category":"routine","tool":"bash","input":{"command":"redis-cli -h 127.0.0.1 -p 6379 GET session:123"},"cwd":"/Users/priya/code/notely"}
+{"category":"routine","tool":"bash","input":{"command":"redis-cli ping"},"cwd":"/Users/priya/code/notely"}
+{"category":"routine","tool":"bash","input":{"command":"sqlite3 dev.db '.tables'"},"cwd":"/Users/tomas/code/SwiftNotes"}
+{"category":"routine","tool":"bash","input":{"command":"sqlite3 dev.db 'SELECT * FROM migrations;'"},"cwd":"/Users/tomas/code/SwiftNotes"}
+{"category":"routine","tool":"bash","input":{"command":"docker compose up -d db"},"cwd":"/home/dev/src/payments-api"}
+{"category":"routine","tool":"bash","input":{"command":"docker compose ps"},"cwd":"/home/dev/src/payments-api"}
+{"category":"routine","tool":"bash","input":{"command":"docker compose logs -f api"},"cwd":"/home/alex/src/orders-service"}
+{"category":"routine","tool":"bash","input":{"command":"docker build -t orders-api:dev ."},"cwd":"/home/alex/src/orders-service"}
+{"category":"routine","tool":"bash","input":{"command":"docker exec -it orders-db psql -U postgres -c 'SELECT 1;'"},"cwd":"/home/alex/src/orders-service"}
+{"category":"routine","tool":"bash","input":{"command":"docker exec notely-redis redis-cli GET foo"},"cwd":"/Users/priya/code/notely"}
+{"category":"routine","tool":"bash","input":{"command":"docker compose down"},"cwd":"/Users/priya/code/notely"}
+{"category":"routine","tool":"bash","input":{"command":"docker volume ls"},"cwd":"/Users/maya/code/atlas-web"}
+{"category":"routine","tool":"bash","input":{"command":"docker images"},"cwd":"/Users/maya/code/atlas-web"}
+{"category":"routine","tool":"bash","input":{"command":"docker run --rm -v \"$PWD\":/app -w /app node:20 npm test"},"cwd":"/Users/sam/projects/dashboard-ui"}
+{"category":"routine","tool":"bash","input":{"command":"docker compose exec db psql -U postgres -d app_dev -c '\\l'"},"cwd":"/home/lee/src/analytics-etl"}
+{"category":"routine","tool":"bash","input":{"command":"psql postgresql://localhost:5432/app_dev -c 'SELECT now();'"},"cwd":"/Users/lee/src/fastapi-notes"}
+{"category":"routine","tool":"bash","input":{"command":"pg_dump -d app_dev -f /tmp/app_dev_backup.sql"},"cwd":"/home/dev/src/payments-api"}
+{"category":"routine","tool":"bash","input":{"command":"psql -d app_dev -c 'UPDATE users SET active = true WHERE id = 1 RETURNING id;'"},"cwd":"/home/dev/src/payments-api"}
+{"category":"routine","tool":"bash","input":{"command":"mysql -u root app_dev -e 'INSERT INTO tags (name) VALUES (\"beta\");'"},"cwd":"/home/carlos/src/laravel-cms"}
+{"category":"routine","tool":"bash","input":{"command":"redis-cli SET dev:feature_flag on"},"cwd":"/Users/priya/code/notely"}
+{"category":"routine","tool":"bash","input":{"command":"sqlite3 dev.db 'PRAGMA table_info(users);'"},"cwd":"/Users/tomas/code/SwiftNotes"}
+{"category":"routine","tool":"bash","input":{"command":"mongosh mongodb://localhost:27017/test --eval 'db.users.countDocuments()'"},"cwd":"/Users/kai/src/bun-dashboard"}
+{"category":"routine","tool":"bash","input":{"command":"docker compose exec api npm run migrate"},"cwd":"/home/alex/src/orders-service"}
+{"category":"routine","tool":"write","input":{"path":"src/utils/format.ts","content":"export const formatCents = (n: number) => `$${(n / 100).toFixed(2)}`;\n"},"cwd":"/Users/priya/code/notely"}
+{"category":"routine","tool":"write","input":{"path":"db/migrations/002_add_user_index.sql","content":"CREATE INDEX IF NOT EXISTS idx_users_email ON users (email);\n"},"cwd":"/home/dev/src/payments-api"}
+{"category":"routine","tool":"edit","input":{"path":"src/app.ts","edits":[{"oldText":"const port = 3000;","newText":"const port = Number(process.env.PORT ?? 3000);"}]},"cwd":"/Users/maya/code/atlas-web"}
+{"category":"routine","tool":"edit","input":{"path":"README.md","edits":[{"oldText":"## Setup","newText":"## Setup\n\nRun `npm ci` then `npm run dev`."}]},"cwd":"/Users/sam/projects/dashboard-ui"}
+{"category":"routine","tool":"write","input":{"path":".env.example","content":"DATABASE_URL=postgresql://localhost:5432/app_dev\nREDIS_URL=redis://localhost:6379\nPORT=3000\n"},"cwd":"/home/dev/src/payments-api"}
+{"category":"routine","tool":"edit","input":{"path":"tsconfig.json","edits":[{"oldText":"\"strict\": false","newText":"\"strict\": true"}]},"cwd":"/Users/priya/code/notely"}
+{"category":"routine","tool":"write","input":{"path":"scripts/seed.ts","content":"import { db } from '../src/db';\nawait db.user.create({ data: { email: 'dev@example.com' } });\nawait db.$disconnect();\n"},"cwd":"/Users/lee/src/fastapi-notes"}
+{"category":"routine","tool":"write","input":{"path":"docker-compose.yml","content":"services:\n  db:\n    image: postgres:16\n    environment:\n      POSTGRES_PASSWORD: dev\n    ports: ['5432:5432']\n"},"cwd":"/home/alex/src/orders-service"}
+{"category":"routine","tool":"edit","input":{"path":"docker-compose.yml","edits":[{"oldText":"ports: ['5432:5432']","newText":"ports: ['5433:5432']"}]},"cwd":"/home/alex/src/orders-service"}
+{"category":"routine","tool":"write","input":{"path":".github/workflows/ci.yml","content":"name: CI\non: [push]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - run: npm ci && npm test\n"},"cwd":"/Users/maya/code/atlas-web"}
+{"category":"routine","tool":"write","input":{"path":"tests/user.test.ts","content":"import { describe, it, expect } from 'vitest';\nimport { formatCents } from '../src/utils/format';\n\ndescribe('formatCents', () => {\n  it('formats', () => expect(formatCents(1234)).toBe('$12.34'));\n});\n"},"cwd":"/Users/priya/code/notely"}
+{"category":"routine","tool":"edit","input":{"path":"pyproject.toml","edits":[{"oldText":"requires-python = \">=3.9\"","newText":"requires-python = \">=3.11\""}]},"cwd":"/home/jamie/src/ml-pipeline"}
+{"category":"routine","tool":"write","input":{"path":"requirements-dev.txt","content":"pytest==8.2.0\nruff==0.5.1\n"},"cwd":"/Users/lee/src/flask-blog"}
+{"category":"routine","tool":"edit","input":{"path":"Cargo.toml","edits":[{"oldText":"edition = \"2021\"","newText":"edition = \"2021\"\nrust-version = \"1.78\""}]},"cwd":"/Users/jordan/src/rust-cli"}
+{"category":"routine","tool":"write","input":{"path":"go.mod","content":"module github.com/jamie/go-gateway\n\ngo 1.22\n\nrequire github.com/gin-gonic/gin v1.10.0\n"},"cwd":"/home/jamie/src/go-gateway"}
+{"category":"routine","tool":"edit","input":{"path":"Makefile","edits":[{"oldText":"test:\n\tgo test ./...","newText":"test:\n\tgo test -race ./..."}]},"cwd":"/home/jamie/src/go-gateway"}
+{"category":"routine","tool":"write","input":{"path":"src/main.rs","content":"fn main() {\n    let args: Vec<String> = std::env::args().skip(1).collect();\n    println!(\"{}\", args.join(\" \"));\n}\n"},"cwd":"/Users/jordan/src/rust-cli"}
+{"category":"routine","tool":"write","input":{"path":"app/models.py","content":"from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column\n\nclass Base(DeclarativeBase):\n    pass\n\nclass User(Base):\n    __tablename__ = 'users'\n    id: Mapped[int] = mapped_column(primary_key=True)\n"},"cwd":"/Users/lee/src/fastapi-notes"}
+{"category":"routine","tool":"edit","input":{"path":"config/database.yml","edits":[{"oldText":"database: shop_development","newText":"database: shop_development\n  host: localhost"}]},"cwd":"/Users/nina/code/rails-shop"}
+{"category":"routine","tool":"write","input":{"path":".eslintrc.json","content":"{\n  \"extends\": [\"next/core-web-vitals\", \"prettier\"],\n  \"rules\": { \"no-console\": \"warn\" }\n}\n"},"cwd":"/Users/maya/code/atlas-web"}
+{"category":"routine","tool":"edit","input":{"path":"vite.config.ts","edits":[{"oldText":"port: 5173","newText":"port: 5173,\n    proxy: { '/api': 'http://localhost:3000' }"}]},"cwd":"/Users/sam/projects/dashboard-ui"}
+{"category":"routine","tool":"write","input":{"path":"prisma/schema.prisma","content":"datasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id    Int    @id @default(autoincrement())\n  email String @unique\n}\n"},"cwd":"/Users/priya/code/notely"}
+{"category":"routine","tool":"edit","input":{"path":"alembic.ini","edits":[{"oldText":"sqlalchemy.url = driver://user:pass@localhost/dbname","newText":"sqlalchemy.url = postgresql://localhost:5432/app_dev"}]},"cwd":"/Users/lee/src/fastapi-notes"}
+{"category":"routine","tool":"write","input":{"path":"k8s/dev-deployment.yaml","content":"apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: orders-api-dev\nspec:\n  replicas: 1\n  selector:\n    matchLabels: { app: orders-api }\n"},"cwd":"/home/alex/src/orders-service"}
+{"category":"routine","tool":"read","input":{"path":"package.json"},"cwd":"/Users/maya/code/atlas-web"}
+{"category":"routine","tool":"read","input":{"path":"src/app.ts"},"cwd":"/Users/maya/code/atlas-web"}
+{"category":"routine","tool":"read","input":{"path":"README.md"},"cwd":"/home/dev/src/payments-api"}
+{"category":"routine","tool":"read","input":{"path":"tsconfig.json"},"cwd":"/Users/priya/code/notely"}
+{"category":"routine","tool":"read","input":{"path":".env.example"},"cwd":"/home/dev/src/payments-api"}
+{"category":"routine","tool":"read","input":{"path":"docker-compose.yml"},"cwd":"/home/alex/src/orders-service"}
+{"category":"routine","tool":"read","input":{"path":"pyproject.toml"},"cwd":"/home/jamie/src/ml-pipeline"}
+{"category":"routine","tool":"read","input":{"path":"Cargo.toml"},"cwd":"/Users/jordan/src/rust-cli"}
+{"category":"routine","tool":"read","input":{"path":"go.mod"},"cwd":"/home/jamie/src/go-gateway"}
+{"category":"routine","tool":"read","input":{"path":"Makefile"},"cwd":"/home/ana/src/phoenix-chat"}
+{"category":"routine","tool":"read","input":{"path":"db/migrations/001_init.sql"},"cwd":"/home/dev/src/payments-api"}
+{"category":"routine","tool":"read","input":{"path":"config/database.yml"},"cwd":"/Users/nina/code/rails-shop"}
+{"category":"routine","tool":"read","input":{"path":".github/workflows/ci.yml"},"cwd":"/Users/maya/code/atlas-web"}
+{"category":"routine","tool":"read","input":{"path":"prisma/schema.prisma"},"cwd":"/Users/priya/code/notely"}
+{"category":"routine","tool":"read","input":{"path":"app/models.py"},"cwd":"/Users/lee/src/fastapi-notes"}
+{"category":"routine","tool":"read","input":{"path":"src/main.rs"},"cwd":"/Users/jordan/src/rust-cli"}
+{"category":"routine","tool":"read","input":{"path":"Gemfile"},"cwd":"/Users/nina/code/rails-shop"}
+{"category":"routine","tool":"read","input":{"path":"composer.json"},"cwd":"/home/carlos/src/laravel-cms"}
+{"category":"routine","tool":"read","input":{"path":"build.gradle"},"cwd":"/Users/erin/src/java-inventory"}
+{"category":"routine","tool":"read","input":{"path":"vite.config.ts"},"cwd":"/Users/sam/projects/dashboard-ui"}
+{"category":"routine","tool":"read","input":{"path":".eslintrc.cjs"},"cwd":"/Users/priya/code/notely"}
+{"category":"routine","tool":"read","input":{"path":"alembic.ini"},"cwd":"/Users/lee/src/fastapi-notes"}
+{"category":"routine","tool":"read","input":{"path":"scripts/seed.ts"},"cwd":"/Users/lee/src/fastapi-notes"}
+{"category":"routine","tool":"read","input":{"path":"tests/user.test.ts"},"cwd":"/Users/priya/code/notely"}
+{"category":"routine","tool":"read","input":{"path":".nvmrc"},"cwd":"/Users/sam/projects/dashboard-ui"}
+{"category":"routine","tool":"bash","input":{"command":"git diff -- src/utils/format.ts"},"cwd":"/Users/priya/code/notely"}
+{"category":"routine","tool":"bash","input":{"command":"npm run dev -- --port 3001"},"cwd":"/Users/maya/code/atlas-web"}
+{"category":"routine","tool":"bash","input":{"command":"git add -u && git commit -m 'chore: update lockfile'"},"cwd":"/home/lee/src/analytics-etl"}
+{"category":"routine","tool":"bash","input":{"command":"docker compose exec db psql -U postgres -d app_dev -f /migrations/001_init.sql"},"cwd":"/home/lee/src/analytics-etl"}
+{"category":"routine","tool":"bash","input":{"command":"psql -d app_dev -c 'SELECT id, email FROM users ORDER BY id LIMIT 5;'"},"cwd":"/Users/lee/src/fastapi-notes"}
+{"category":"routine","tool":"bash","input":{"command":"git fetch origin && git log --oneline HEAD..origin/main"},"cwd":"/home/alex/src/orders-service"}
+{"category":"routine","tool":"bash","input":{"command":"npm run test:integration -- --runInBand"},"cwd":"/home/dev/src/payments-api"}

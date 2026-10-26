@@ -1,0 +1,20 @@
+#!/bin/bash
+# mailbox <inbox|read|ack|send> ... - pi-mailbox CLI fixed to the red-team identity.
+# Sending is only allowed to laya-claude (the reviewer).
+set -euo pipefail
+CLI=${PI_MAILBOX_CLI:-$HOME/Developer/pi-mailbox/.venv/bin/pi-mailbox}
+cmd=${1:-}; shift || true
+case "$cmd" in
+  inbox|read|ack) exec "$CLI" "$cmd" "$@" --as laya-redteam ;;
+  send)
+    args=("$@")
+    for ((i = 0; i < ${#args[@]}; i++)); do
+      case "${args[$i]}" in
+        --to) [[ "${args[$((i + 1))]:-}" == "laya-claude" ]] || { echo "mailbox: you may only send to laya-claude" >&2; exit 2; } ;;
+        --to=*|--from*|--as*) echo "mailbox: use '--to laya-claude'; --from/--as are fixed" >&2; exit 2 ;;
+      esac
+    done
+    # The identity goes last so nothing earlier on the line can override it.
+    exec "$CLI" send "$@" --from laya-redteam ;;
+  *) echo "usage: mailbox inbox | read <id> | ack <id> | send --to laya-claude --subject S --body B [--reply-to ID]" >&2; exit 2 ;;
+esac
