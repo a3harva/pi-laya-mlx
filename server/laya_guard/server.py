@@ -1,4 +1,5 @@
-"""HTTP server: `POST /v1/guard` screens one tool call, `POST /v1/systemone` answers raw Laya requests.
+"""HTTP server: `POST /v1/guard` screens one tool call, `POST /v1/systemone` answers raw Laya requests,
+`GET /` serves a small page for trying the guard by hand.
 
 Environment:
   LAYA_GUARD_HOST       bind address (default 127.0.0.1)
@@ -13,15 +14,18 @@ import argparse
 import logging
 import os
 import time
+from pathlib import Path
 
 import uvicorn
 from fastapi import Depends, FastAPI, Header, HTTPException
+from fastapi.responses import HTMLResponse
 from pydantic import BaseModel, Field
 
 from . import __version__, policy
 from .model import load_model
 
 log = logging.getLogger("laya_guard")
+UI_PAGE = Path(__file__).with_name("ui.html")
 
 
 class GuardRequest(BaseModel):
@@ -42,6 +46,10 @@ def create_app(model, threshold: float, api_key: str | None = None) -> FastAPI:
     def authorize(authorization: str | None = Header(default=None)):
         if api_key and authorization != f"Bearer {api_key}":
             raise HTTPException(status_code=401, detail="missing or wrong bearer token")
+
+    @app.get("/", response_class=HTMLResponse, include_in_schema=False)
+    def ui():
+        return UI_PAGE.read_text()
 
     @app.get("/health")
     def health():
