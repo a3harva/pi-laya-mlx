@@ -186,7 +186,10 @@ def main():
     parser.add_argument("--redteam-repeat", type=int, default=3, help="times each reviewed red-team row appears in training")
     parser.add_argument("--evidence", action="store_true", help="add CARE structural evidence to shell states (needs laya-guard[evidence])")
     parser.add_argument("--label-smoothing", type=float, default=0.1, help="keeps scores graded instead of saturating at 1.00")
+    parser.add_argument("--cache-limit-gb", type=float, default=1.0,
+                        help="cap on MLX's buffer cache; uncapped, it grows with every new batch shape until the Mac swaps")
     opts = parser.parse_args()
+    mx.set_cache_limit(int(opts.cache_limit_gb * 2**30))
 
     checkpoint, code_dir = resolve_checkpoint(opts.base)
     sys.path.insert(0, str(code_dir))
@@ -249,7 +252,9 @@ def main():
             running += loss.item()
             step += 1
             if step % 50 == 0:
-                print(f"  step {step}/{steps} loss {running / 50:.4f} ({time.time() - started:.0f}s)", flush=True)
+                print(f"  step {step}/{steps} loss {running / 50:.4f} ({time.time() - started:.0f}s) "
+                      f"mem active {mx.get_active_memory() / 2**30:.1f} GB cache {mx.get_cache_memory() / 2**30:.1f} GB "
+                      f"peak {mx.get_peak_memory() / 2**30:.1f} GB", flush=True)
                 running = 0.0
         report(f"epoch {epoch + 1}")
 

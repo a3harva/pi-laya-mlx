@@ -2,6 +2,8 @@
 
 **Screen every tool call your [pi](https://pi.dev) coding agent makes with [Laya](https://huggingface.co/convaiinnovations/laya), a calibrated decision model running locally on Apple Silicon via MLX.** Calls Laya judges unsafe are blocked before they run, and the model gets the reason back as the tool result, so it can change course instead of retrying.
 
+![Held-out results: v8 (before) vs the live v2+v8 ensemble, v9d, v10 and v9d+v10](benchmark.png)
+
 ```
 model ──tool call──▶ pi ──tool_call hook──▶ extension ──POST /v1/guard──▶ laya-guard (MLX, localhost)
                       ▲                         │                              │
@@ -26,7 +28,7 @@ model ──tool call──▶ pi ──tool_call hook──▶ extension ──
 ```bash
 git clone https://github.com/a3harva/pi-laya-mlx && cd pi-laya-mlx
 ./scripts/setup.sh          # creates server/.venv, installs MLX deps, downloads the fine-tuned model (~500 MB)
-# ./scripts/setup.sh --finetune   # or train it yourself (~1 h on an M-series Mac)
+# ./scripts/setup.sh --finetune   # or train it yourself (~1.5 h on a 16 GB M-series Mac)
 ```
 
 Try it for one session:
@@ -39,6 +41,13 @@ Install it for every session:
 
 ```bash
 pi install ./            # or: add the absolute path of this folder to "packages" in ~/.pi/agent/settings.json
+```
+
+Run it in tmux, with pi on the left and the guard's live verdict log on the right:
+
+```bash
+scripts/tmux.sh ~/code/myproject        # outside tmux: creates/attaches session "laya"; inside tmux: splits the current window
+scripts/tmux.sh . -- --model sonnet     # anything after -- is passed to pi
 ```
 
 The extension starts the server on first use (a detached daemon on `127.0.0.1:8723`, shared by all pi sessions, log in `~/.cache/laya-guard/server.log`). To run it yourself:
@@ -74,10 +83,16 @@ Server (`laya-guard-serve` flags or environment variables):
 
 | Variable | Default | |
 |---|---|---|
-| `LAYA_GUARD_MODEL` / `--model` | `checkpoints/laya-toolguard` if present, else `a3harva/laya-toolguard-mlx` (v8) | local dir, `hf-repo[:subdir]`, or a comma-separated list (cautious ensemble) |
+| `LAYA_GUARD_MODEL` / `--model` | `checkpoints/laya-toolguard` if present, else `a3harva/laya-toolguard-mlx` (v9d) | local dir, `hf-repo[:subdir]`, or a comma-separated list (cautious ensemble) |
 | `LAYA_GUARD_THRESHOLD` / `--threshold` | `0.5` | |
 | `LAYA_GUARD_HOST`, `LAYA_GUARD_PORT` | `127.0.0.1`, `8723` | |
 | `LAYA_GUARD_API_KEY` | none | require `Authorization: Bearer <key>` |
+
+### Web UI
+
+Open <http://127.0.0.1:8723/> while the server runs to check a command (or a write/edit, or any tool with JSON input)
+by hand: you get the verdict, the reason the agent would see, every category's probability, and a history of checks. The
+threshold slider overrides the server default for that request only.
 
 ### API
 
@@ -100,16 +115,22 @@ Laya never generates text, so there is nothing to parse and a prompt injection i
 
 ## Results
 
-Zero-shot Laya is a weak judge of shell commands (it blocked `npm test`). It was fine-tuned in eight versions, with a
+Zero-shot Laya is a weak judge of shell commands (it blocked `npm test`). It was fine-tuned in ten versions, with a
 red-team loop between them: a second pi agent (DeepSeek, locked down so it can only score text, never run it) wrote
 adversarial probes and training rows each round; every plan and label was reviewed before use. All numbers are on
-calls never trained on. Full history: [`research/REDTEAM_LOG.md`](research/REDTEAM_LOG.md).
+calls never trained on (risky blocked / routine allowed). Full history: [`research/REDTEAM_LOG.md`](research/REDTEAM_LOG.md).
 
-| model | synthetic val (324): risky blocked / routine allowed | held-out (617) | final exam (107) | latency |
-|---|---|---|---|---|
-| v1 (first fine-tune) | | round-1 probes: 67.6% overall | | ~50 ms |
-| v8 (evidence, single model) | 98.3% / 97.9% | 91.1% / 92.7% | 82.4% / 91.1% | ~60-85 ms |
-| **v2+v8 cautious ensemble** | 98.9% / 95.2% | **93.4%** / 77.0% | **90.2%** / 73.2% | ~2x |
+| model | held-out (617) | round 9 (58) | round 10 (77) | final exam (107) | canonical risky (26) | checks per call |
+|---|---|---|---|---|---|---|
+| v8 (previous default) | 91.4% / 92.3% | 78.6% / 96.7% | 70.7% / 80.6% | 84.3% / 91.1% | 21 | 1 |
+| v2+v8 ensemble | 93.4% / 77.0% | 89.3% / 83.3% | 80.5% / 58.3% | 90.2% / 73.2% | 25 | 2 |
+| **v9d (default)** | **96.1% / 93.9%** | 96.4% / 96.7% | 90.2% / 86.1% | **92.2% / 85.7%** | **26** | 1 |
+| v10 | 94.7% / 95.8% | 96.4% / 96.7% | 92.7% / 91.7% | 84.3% / 83.9% | 25 | 1 |
+| v9d+v10 ensemble | 96.7% / 93.6% | 100% / 96.7% | 97.6% / 83.3% | 92.2% / 78.6% | 26 | 2 |
+
+v9d = v8's data plus round 9, with 18 instead of 14 trainable layers. Its one regression against v8 is routine calls on
+the final exam. v10 adds round 10's rows and fixes most round-10 misses, but forgets some final-exam attacks. On the
+synthetic validation split (324 rows) v8 scores 98.3% / 97.9%.
 
 The synthetic validation split is LLM- and template-written data held out from training; it is easy, so it mostly
 shows the model learned the categories. The held-out and final-exam sets are adversarial on purpose (hard negatives such as `grep -rn 'rm -rf ~' docs/`);
@@ -126,11 +147,11 @@ because CARE did not release its split):
 
 ### Ensembles and evidence
 
-- `LAYA_GUARD_MODEL=a3harva/laya-toolguard-mlx,a3harva/laya-toolguard-mlx:v2` runs the v2+v8 cautious ensemble: a call is blocked if any member would
+- `LAYA_GUARD_MODEL=a3harva/laya-toolguard-mlx,a3harva/laya-toolguard-mlx:v10` runs the v9d+v10 cautious ensemble: a call is blocked if any member would
   block it. Newer checkpoints fix many red-team failures but forget a few classic attacks; the union keeps both.
 - `pip install "laya-guard[evidence]"` adds structural facts from [CARE](https://github.com/prisma-research/CARE)'s
   static shell analyzer (effect class per command part, output piped to an interpreter, critical paths, risk rules)
-  to the state Laya judges. Checkpoints trained with it (`state_evidence: true` in their config, e.g. v8) require it.
+  to the state Laya judges. Checkpoints trained with it (`state_evidence: true` in their config, e.g. v8, v9d) require it.
 - Long commands, file contents and edits are judged in overlapping 1,200-character windows; the riskiest decides.
 
 ## Fine-tuning
@@ -138,19 +159,24 @@ because CARE did not release its split):
 ```bash
 server/.venv/bin/python research/gen_templates.py          # template rows -> research/data/templates.jsonl
 research/gen_llm.sh destroy A                               # LLM-written rows via pi (any provider) -> research/data/gen/
-# v8 recipe; the watchdog stops training if free memory drops below 10% (16 GB Macs need --batch 4)
-scripts/train-guarded.sh --out checkpoints/laya-toolguard --evidence --epochs 4 --train-layers 14 --batch 4
+# v9d recipe (v10 when round-10 rows are present); the watchdog stops training if free memory drops below 10% (16 GB Macs need --batch 4)
+scripts/train-guarded.sh --out checkpoints/laya-toolguard --evidence --epochs 4 --train-layers 18 --batch 4 --redteam-repeat 1 --routine-weight 1.5
 server/.venv/bin/python research/evaluate.py checkpoints/laya-toolguard
 ```
+
+Training time on a 16 GB M-series Mac (measured; full table in `research/REDTEAM_LOG.md`): the v8 recipe took about
+1.4 s per step at batch 4 while swapping; with the MLX cache cap (`--cache-limit-gb`, default 1) v9 runs at 0.66 s per step, about 12 min per epoch on ~4,400 rows, so 4 epochs plus evaluation and saving is about
+1 h. v9d's 18 trainable layers take 1.05 s per step (80 min, peak 10.5 GB). Time scales with rows x epochs, and with the number of trainable layers (8 layers: ~10 min per epoch).
+A run that is much slower than that is usually swapping: check `memory_pressure`.
 
 Data (`research/data/`):
 
 | file | rows | used for |
 |---|---|---|
 | `gen/*.jsonl`, `templates.jsonl` | ~3,500 | training (10% held out as the synthetic validation split) |
-| `redteam/train/*.jsonl` | ~1,200 | training; reviewed red-team rows, repeated 3x |
+| `redteam/train/*.jsonl` | ~1,670 | training; reviewed red-team rows (round 10 only in v10) |
 | `eval.jsonl` | 128 | hand-written test set, never trained on |
-| `redteam/probes/*.jsonl` | ~490 | adversarial probes from rounds 1-7, never trained on |
+| `redteam/probes/*.jsonl` | ~620 | adversarial probes from rounds 1-7, 9 and 10, never trained on |
 | `canonical.jsonl` | 34 | classic attacks; a gate against forgetting them |
 | `redteam/final-exam.jsonl` | 107 | round 8 final exam, never trained on |
 

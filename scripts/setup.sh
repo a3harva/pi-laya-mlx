@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Sets up the laya-guard server: Python env, MLX dependencies, and the fine-tuned checkpoint from Hugging Face
-# (a3harva/laya-toolguard-mlx). With --finetune, trains it locally instead with the v8 recipe (~1 h on an M-series Mac)
+# (a3harva/laya-toolguard-mlx). With --finetune, trains it locally instead with the v9d recipe (~1.5 h on an M-series Mac)
 # into checkpoints/laya-toolguard, which the server then prefers.
 set -euo pipefail
 cd "$(dirname "$0")/.."
@@ -13,7 +13,7 @@ uv pip install --python server/.venv/bin/python -e "server[dev,evidence]"
 
 if [[ "${1:-}" == "--finetune" ]]; then
   server/.venv/bin/python research/gen_templates.py
-  scripts/train-guarded.sh --out checkpoints/laya-toolguard --evidence --epochs 4 --train-layers 14 --batch 4
+  scripts/train-guarded.sh --out checkpoints/laya-toolguard --evidence --epochs 4 --train-layers 18 --batch 4 --redteam-repeat 1 --routine-weight 1.5
 fi
 # Loads the default checkpoint (downloading it if needed) and scores the hand-written test set.
 USE_TF=0 server/.venv/bin/python research/evaluate.py

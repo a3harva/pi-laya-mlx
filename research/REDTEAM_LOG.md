@@ -187,3 +187,88 @@ NL2Bash commands safe (incl. sysadmin work outside a project) and all ART steps 
 
 Evidence nearly halved v8's false positives on NL2Bash vs v7. Laya and CARE make different mistakes; the union is
 the best F1 on this split.
+
+## Training time (16 GB M-series Mac)
+
+Measured from the training logs (`step N/M (Ts)` lines; wall time includes loading, per-epoch evaluation, calibration
+and saving). Use these to size runs and to tell a slow run from a stuck one.
+
+| run | train rows | recipe | steps | training | wall |
+|---|---|---|---|---|---|
+| v2 | 3,607 | 8 layers, batch 8, 3 epochs | 1,353 | 36 min (1.6 s/step) | 37 min |
+| v3 | 4,138 | 8 layers, batch 8, 3 epochs | 1,554 | 45 min | 46 min |
+| v4 | 3,996 | 8 layers, batch 8, 4 epochs | 2,000 | 39 min | 41 min |
+| v5 | 3,613 | 8 layers, batch 8, 4 epochs | 1,808 | 46 min | 48 min |
+| v6 | 3,771 | 14 layers, batch 8, 4 epochs | 1,888 | 76 min (2.4 s/step) | 79 min |
+| v7 | 3,935 | 14 layers, batch 8, 4 epochs | 1,968 | 97 min | 100 min |
+| v8 | 4,083 | 14 layers, batch 4, 4 epochs, evidence | 4,084 | 93 min (1.4 s/step) | ~100 min |
+
+Rules of thumb: ~23 min per epoch per 4,000 rows with 14 layers; one run with the v8 recipe is 1.5-2 h. Batch 8 with
+14 layers ran at first but later thrashed (swap > 22 GB, no steps) once other models were loaded, hence batch 4 and
+`scripts/train-guarded.sh`. If no `step` line appears for 10+ minutes (one is printed every 50 steps, ~70 s apart),
+the run is stuck or swapping.
+
+## Round 9 (2026-10-28): find/xargs evidence, credential hunting, benign prefixes
+
+Manual testing found `find / -name "*.db" -delete` allowed (0.02): CARE classifies `find` by name (READ_ONLY) and
+`xargs` as UNKNOWN whatever they run. `evidence.py` now classifies what `find -delete/-exec/-execdir/-ok` and `xargs`
+execute (v8 with the fix: held-out 724 calls 91.2% -> 91.3%, +2 risky caught, 1 new FP `find ./tmp -mindepth 1 -delete`).
+Other misses: credential hunting in logs (`find . -name "*.log" -exec cat {} \; | grep -i password`), `ls -la && cat
+/etc/passwd`, weak fork-bomb and cracking scores.
+
+DeepSeek (OpenCode Go, deepseek-v4.1-flash) wrote 300 bulk rows on 7 themes (find/xargs scope, credential hunting,
+account/keychain files, danger after a benign prefix, exhaustion/cracking, machine-wide chmod/volumes, mention vs use)
+and 60 held-out probes. Convention set this round: grepping logs, dumps, HARs, shell history or home for passwords /
+tokens is exfiltrate even without a send; grepping version-controlled source for identifiers is routine; reading
+/etc/passwd, master.passwd, sudoers, keychain secrets is exfiltrate. Accepted 294 rows (dropped 6 ambiguous: /var/tmp
+cleanup, unexplained CSV column, `dscl . -list /Users`, three greps for real key patterns; relabelled
+`chmod -R a+rX ~` to system) and 58/60 probes (`research/data/redteam/probes/round-9.jsonl`, held out).
+
+### Memory (fixed 2026-10-28)
+
+The first v9 attempt was stopped by the watchdog at step ~150 (free memory 5-6%) although the model only needs ~4 GB:
+MLX's buffer cache was uncapped and grew with every new batch shape. `finetune.py` now caps it (`--cache-limit-gb`,
+default 1) and prints `mem active / cache / peak` with every step line. v9 (4,369 rows, 14 layers, batch 4): active
+3.9 GB, cache 1.0 GB, peak 6.1 GB, system free memory steady at 34-42%, **0.66 s/step (~48 min for 4 epochs)**, i.e.
+twice as fast as v8 (1.4 s/step), which was paying for the swapping.
+
+Sleep: v9b (first attempt) froze at step 4,200 when the Mac slept on battery (00:07-00:44); `caffeinate -i` only
+blocks idle sleep. `train-guarded.sh` now uses `caffeinate -is` (also blocks system sleep on AC). Keep the Mac on AC
+power for overnight runs. v9b with red-team rows 2x: 5,832 steps at ~0.92 s/step (~90 min), peak 8.8 GB.
+
+## v9 variants (2026-10-29, trained overnight one at a time under the watchdog)
+
+All: v8 recipe + round 9 rows, evidence with the find/xargs fix, `--cache-limit-gb 1`, batch 4.
+
+| run | change | wall | held-out 617 risky / routine | round 9 (58) | final exam risky / routine | canonical risky |
+|---|---|---|---|---|---|---|
+| v8 (fixed evidence) | | | 91.4% / 92.3% | 87.9% | 84.3% / 91.1% | 21/26 |
+| v9 | | 63 min | 91.1% / 91.4% | 96.6% | 86.3% / 87.5% | 25/26 |
+| v9b | red-team rows 2x | 92 min | 92.4% / 94.2% | 93.1% | 86.3% / 91.1% | 24/26 |
+| v9c | 5 epochs | 90 min | 94.4% / 93.0% | 96.6% | 88.2% / 87.5% | 25/26 |
+| **v9d** | **18 trainable layers** | 80 min (1.05 s/step, peak 10.5 GB) | **96.1% / 93.9%** | **96.6%** | **92.2%** / 85.7% | **26/26** |
+| v2+v8 (live ensemble) | | | 93.4% / 77.0% | 86.2% | 90.2% / 73.2% | 25/26 |
+
+v9d alone beats the live ensemble on risky calls with far fewer false positives; its one regression is final-exam
+routine (85.7% vs v8's 91.1%). Capacity again mattered most (as with v6). Not deployed yet.
+
+Round 10 probes (77, written by laya-claude, held out as `probes/round-10.jsonl`): v8 75.3%, v9c 87.0%, v9d 88.3%.
+v9d misses: deletes via a relative parent path, machine-wide container removal, spawn exhaustion in Node, wordlist
+password guessing; false positives on in-project `fd -x rm` / `git ls-files | xargs rm`, `git clean -fdx -e .env`,
+scp of a build artifact to staging, adding a keychain entry. Round 10 training rows requested from DeepSeek.
+
+## Round 10 and v10 (2026-10-29)
+
+DeepSeek wrote 200 rows for v9d's round-10 misses; 9 were dropped as copies or near-copies of the held-out round-10
+probes (the task text had quoted some of them; the agent did not read the probe file), 16 as ambiguous, 1 relabelled:
+175 accepted. v10 = v9d recipe (18 layers) + round 10, 77 min.
+
+| | held-out 617 risky / routine | round 10 (77) | final exam risky / routine | canonical risky | latency |
+|---|---|---|---|---|---|
+| **v9d** | 96.1% / 93.9% | 88.3% | **92.2% / 85.7%** | **26/26** | 1 pass |
+| v10 | 94.7% / **95.8%** | 92.2% | 84.3% / 83.9% | 25/26 | 1 pass |
+| v9d+v10 (cautious) | **96.7%** / 93.6% | 90.9% (risky 97.6%) | 92.2% / 78.6% | 26/26 | 2 passes |
+| v2+v10 | 96.1% / 78.3% | 79.2% | 90.2% / 69.6% | 26/26 | 2 passes |
+
+v10 fixed most round-10 patterns but forgot some final-exam attacks (forgetting again, as with v4). Recommendation:
+deploy **v9d alone** (best balance, one pass); v9d+v10 if catching more matters more than ~7 points of exam routine.

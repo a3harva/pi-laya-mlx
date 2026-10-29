@@ -13,7 +13,7 @@ from . import evidence
 # The MLX port of Laya, with its model code bundled in the repo (cavi-ai/mlx-agent, MIT).
 DEFAULT_REPO = "cavi-ai/laya-MLX-8bit"
 DEFAULT_SUBDIR = "typed-decisions"
-# The published fine-tuned checkpoint (v8 at the root, v2 in v2/).
+# The published fine-tuned checkpoint (v9d at the root; v10, v8 and v2 in subfolders).
 PUBLISHED = "a3harva/laya-toolguard-mlx"
 # A checkpoint at a repo root (hub glob patterns would also match subfolders, so these are exact names).
 CHECKPOINT_FILES = ("config.json", "model.safetensors", "tokenizer.json", "tokenizer_config.json", "special_tokens_map.json", "LICENSE")

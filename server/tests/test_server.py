@@ -124,8 +124,39 @@ def test_evidence_flags_pipe_into_interpreter():
     assert "output_piped_to_interpreter" in state["evidence"]["structure"]
 
 
+def test_find_and_xargs_report_what_they_run():
+    from laya_guard import evidence
+
+    assert evidence._runs("find / -name '*.db' -delete") == ["rm {}"]
+    assert evidence._runs("find ~ -type f -exec shred -u {} +") == ["shred -u {}"]
+    assert evidence._runs("find . -name '*.log' -exec cat {} ; -print") == ["cat {}"]
+    assert evidence._runs("xargs -0 -I {} rm -f {}") == ["rm -f {}"]
+    assert evidence._runs("find src -name '*.py'") == []
+    assert evidence._runs("grep -rn find src/") == []
+
+
+def test_evidence_classifies_find_delete_by_its_effect():
+    from laya_guard import evidence
+
+    if not evidence.available():
+        import pytest
+
+        pytest.skip("CARE not installed")
+    for command in ("find / -name '*.db' -delete", "find ~ -type f -exec shred -u {} +"):
+        state = evidence.with_evidence({"tool": "bash", "input": {"command": command}, "cwd": "/p"})
+        assert state["evidence"]["effects"][0] != "find: READ_ONLY"
+    state = evidence.with_evidence({"tool": "bash", "input": {"command": "find src -name '*.py'"}, "cwd": "/p"})
+    assert state["evidence"]["effects"] == ["find: READ_ONLY"]
+
+
 def test_evidence_leaves_other_tools_alone():
     from laya_guard import evidence
 
     state = {"tool": "write", "input": {"path": "a.txt", "content": "x"}, "cwd": "/p"}
     assert evidence.with_evidence(state) is state
+
+
+def test_ui_page_served():
+    client = TestClient(create_app(FakeModel(SAFE), threshold=0.5))
+    response = client.get("/")
+    assert response.status_code == 200 and "/v1/guard" in response.text
