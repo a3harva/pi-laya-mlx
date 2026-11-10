@@ -159,7 +159,7 @@ waits for (2026-11-10):
 | **Laya v9d**, local MLX | **41 ms** | **46 ms** | **86 ms** | **94.0%** | **96.1%** / 93.9% | **90.2%** | **92.2%** / 85.7% |
 | JEV 1.14.0, TypeSafe API | 391 ms | 474 ms | 598 ms | 89.9% | 85.9% / **96.5%** | 73.2% | 76.5% / **96.4%** |
 
-JEV is more permissive: it allows slightly more routine calls but misses 10-16 points more risky ones, and each check
+JEV is more permissive: it allows slightly more routine calls but misses 10-17 points more risky ones, and each check
 is about 10x slower. JEV here is zero-shot on the guard question and gets no CARE evidence; v9d is fine-tuned on it.
 Running JEV calls six at a time did not slow them (p50 387 ms vs 400 ms sequential). Reproduce:
 
