@@ -8,6 +8,7 @@ Environment:
                         (default cavi-ai/laya-MLX-8bit:typed-decisions)
   LAYA_GUARD_THRESHOLD  block when risk >= this (default 0.5)
   LAYA_GUARD_API_KEY    when set, requests need `Authorization: Bearer <key>`
+  LAYA_GUARD_BACKEND    `mlx` (local Laya, default) or `jev` (TypeSafe's hosted JEV, needs TYPESAFE_API_KEY)
 """
 
 import argparse
@@ -89,12 +90,18 @@ def main():
     parser.add_argument("--port", type=int, default=int(os.environ.get("LAYA_GUARD_PORT", "8723")))
     parser.add_argument("--model", default=os.environ.get("LAYA_GUARD_MODEL"))
     parser.add_argument("--threshold", type=float, default=float(os.environ.get("LAYA_GUARD_THRESHOLD", "0.5")))
+    parser.add_argument("--backend", choices=["mlx", "jev"], default=os.environ.get("LAYA_GUARD_BACKEND", "mlx"))
     args = parser.parse_args()
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s", datefmt="%H:%M:%S")
     os.environ.setdefault("USE_TF", "0")
     started = time.perf_counter()
-    model = load_model(args.model)
+    if args.backend == "jev":
+        from .jev import JevModel
+
+        model = JevModel(args.model)
+    else:
+        model = load_model(args.model)
     log.info("loaded %s in %.1fs", model.name, time.perf_counter() - started)
     app = create_app(model, args.threshold, os.environ.get("LAYA_GUARD_API_KEY"))
     uvicorn.run(app, host=args.host, port=args.port, log_level="warning")

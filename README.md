@@ -15,7 +15,7 @@ model ──tool call──▶ pi ──tool_call hook──▶ extension ──
 - **Local and private.** Nothing leaves the machine. One check takes ~20-60 ms on an M-series Mac.
 - **Gives the model a reason.** Blocks come back to the model as a tool result naming the risk category (destroy, exfiltrate, remote_code, system, production), so it explains or picks a safer path.
 - **Fine-tuned for tool calls.** Ships a training script that fine-tunes Laya in MLX on labeled tool calls (`research/`). Zero-shot Laya is a weak judge of shell commands; the fine-tuned checkpoint ([a3harva/laya-toolguard-mlx](https://huggingface.co/a3harva/laya-toolguard-mlx)) is much better (see [Results](#results)).
-- **Jev-compatible.** The server also exposes `POST /v1/systemone`, the TypeSafe Jev request shape, for any other Laya question.
+- **Jev-compatible.** The server also exposes `POST /v1/systemone`, the TypeSafe Jev request shape, for any other Laya question, and `--backend jev` runs the same guard on TypeSafe's hosted JEV ([comparison](#laya-vs-jev)).
 
 ## Requirements
 
@@ -87,6 +87,7 @@ Server (`laya-guard-serve` flags or environment variables):
 | `LAYA_GUARD_THRESHOLD` / `--threshold` | `0.5` | |
 | `LAYA_GUARD_HOST`, `LAYA_GUARD_PORT` | `127.0.0.1`, `8723` | |
 | `LAYA_GUARD_API_KEY` | none | require `Authorization: Bearer <key>` |
+| `LAYA_GUARD_BACKEND` / `--backend` | `mlx` | `jev` asks TypeSafe's hosted JEV instead of local Laya (needs `TYPESAFE_API_KEY`; model `LAYA_GUARD_JEV_MODEL`, default `jev-latest`) |
 
 ### Web UI
 
@@ -144,6 +145,32 @@ because CARE did not release its split):
 | CARE static engine | 65.9% | 53.6% | 6.1% |
 | Laya v8 | 62.8% | 51.4% | 8.2% |
 | Laya v8 OR CARE static | **73.0%** | 67.7% | 11.9% |
+
+### Laya vs JEV
+
+The same server, policy, state and question, with the forward pass on TypeSafe's hosted JEV (`--backend jev`, JEV
+1.14.0 via `jev-latest`) instead of local Laya v9d. All 893 held-out calls, latency as the HTTP round trip an agent
+waits for (2026-11-10):
+
+![Laya v9d (local MLX) vs JEV 1.14.0 (TypeSafe API): latency and accuracy on every held-out set](benchmark-jev.png)
+
+| | p50 | p95 | p99 | accuracy (893) | held-out 617 risky / routine | round 10 risky | final exam risky / routine |
+|---|---|---|---|---|---|---|---|
+| **Laya v9d**, local MLX | **41 ms** | **46 ms** | **86 ms** | **94.0%** | **96.1%** / 93.9% | **90.2%** | **92.2%** / 85.7% |
+| JEV 1.14.0, TypeSafe API | 391 ms | 474 ms | 598 ms | 89.9% | 85.9% / **96.5%** | 73.2% | 76.5% / **96.4%** |
+
+JEV is more permissive: it allows slightly more routine calls but misses 10-16 points more risky ones, and each check
+is about 10x slower. JEV here is zero-shot on the guard question and gets no CARE evidence; v9d is fine-tuned on it.
+Running JEV calls six at a time did not slow them (p50 387 ms vs 400 ms sequential). Reproduce:
+
+```bash
+server/.venv/bin/laya-guard-serve --port 8723 --model a3harva/laya-toolguard-mlx &
+TYPESAFE_API_KEY=... server/.venv/bin/laya-guard-serve --backend jev --port 8724 &
+server/.venv/bin/python research/bench_server.py http://127.0.0.1:8723 research/results/bench/laya-v9d.jsonl
+server/.venv/bin/python research/bench_server.py http://127.0.0.1:8724 research/results/bench/jev.jsonl --concurrency 6
+server/.venv/bin/python research/bench_report.py research/results/bench/laya-vs-jev.html \
+  "Laya v9d|local MLX=research/results/bench/laya-v9d.jsonl" "JEV 1.14.0|TypeSafe API=research/results/bench/jev.jsonl"
+```
 
 ### Ensembles and evidence
 
